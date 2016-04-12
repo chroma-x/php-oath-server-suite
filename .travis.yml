@@ -1,7 +1,10 @@
 language: php
 
 before_script:
+  - pear config-set preferred_state beta
   - printf "\n" | pecl install imagick
+  - echo "extension=imagick.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - php -m
 
 branches:
   only:

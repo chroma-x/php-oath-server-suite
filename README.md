@@ -86,7 +86,7 @@ $contentEncoder = new QrCodeTotpBase32ContentEncoder();
 // Setting the key name
 $keyName = 'Awesome Application';
 
-// Settings a secret
+// Setting a secret
 // Attention: This is just an example value
 // Use a random value of a proper length stored with your user credentials
 $secret = openssl_random_pseudo_bytes(30);
@@ -116,7 +116,7 @@ $contentEncoder = new QrCodeHotpBase32ContentEncoder();
 // Setting the key name
 $keyName = 'Awesome Application';
 
-// Settings a secret
+// Setting a secret
 // Attention: This is just an example value
 // Use a random value of a proper length stored with your user credentials
 $secret = openssl_random_pseudo_bytes(30);
@@ -152,7 +152,7 @@ $contentEncoder = new QrCodeTotpContentEncoder();
 // Setting the key name
 $keyName = 'Awesome Application';
 
-// Settings a secret
+// Setting a secret
 // Attention: This is just an example value
 // Use a random value of a proper length stored with your user credentials
 $secret = openssl_random_pseudo_bytes(30);
@@ -182,7 +182,7 @@ $contentEncoder = new QrCodeHotpContentEncoder();
 // Setting the key name
 $keyName = 'Awesome Application';
 
-// Settings a secret
+// Setting a secret
 // Attention: This is just an example value
 // Use a random value of a proper length stored with your user credentials
 $secret = openssl_random_pseudo_bytes(30);

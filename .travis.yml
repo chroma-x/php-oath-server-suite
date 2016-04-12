@@ -1,6 +1,7 @@
 language: php
 
 before_install:
+  - pear config-set preferred_state beta
   - printf "\n" | pecl install imagick
   - echo "extension=imagick.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - php -m
@@ -22,3 +23,4 @@ install:
 matrix:
   allow_failures:
     - php: hhvm
+    - php: '5.3'

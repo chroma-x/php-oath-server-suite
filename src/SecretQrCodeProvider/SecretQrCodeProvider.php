@@ -2,9 +2,8 @@
 
 namespace OathServerSuite\SecretQrCodeProvider;
 
-use OathServerSuite\Exception\IoException;
-use OathServerSuite\QrEncode\QrEncoder;
-use OathServerSuite\QrRender\QrCodeRendererPng;
+use QrCodeSuite\QrEncode\QrEncoder;
+use QrCodeSuite\QrRender\QrCodeRendererPng;
 use OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode\Base\QrCodeContentEncoderInterface;
 
 /**
@@ -53,7 +52,6 @@ class SecretQrCodeProvider
 	/**
 	 * @param string $path
 	 * @return $this
-	 * @throws IoException
 	 */
 	public function provideQrCode($path)
 	{

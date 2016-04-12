@@ -2,12 +2,19 @@
 
 [![Build Status](https://travis-ci.org/markenwerk/php-oath-server-suite.svg?branch=master)](https://travis-ci.org/markenwerk/php-oath-server-suite)
 [![Code Climate](https://codeclimate.com/github/markenwerk/php-oath-server-suite/badges/gpa.svg)](https://codeclimate.com/github/markenwerk/php-oath-server-suite)
-[![Issue Count](https://codeclimate.com/github/markenwerk/php-oath-server-suite/badges/issue_count.svg)](https://codeclimate.com/github/markenwerk/php-oath-server-suite)
 [![Latest Stable Version](https://poser.pugx.org/markenwerk/oath-server-suite/v/stable)](https://packagist.org/packages/markenwerk/oath-server-suite)
 [![Total Downloads](https://poser.pugx.org/markenwerk/oath-server-suite/downloads)](https://packagist.org/packages/markenwerk/oath-server-suite)
 [![License](https://poser.pugx.org/markenwerk/oath-server-suite/license)](https://packagist.org/packages/markenwerk/oath-server-suite)
 
 A collection of classes to provide second factor authentication (Yubico OTP, TOTP, HOTP, GoogleAuthenticator) server-side.
+
+For more information about Oath check out [https://openauthentication.org/](https://openauthentication.org/).
+
+More information about TOTP (Time-based One-time Password Algorithm) can be found at [https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm](https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm).
+
+More information about HOTP (HMAC-based One-time Password Algorithm) can be found at [https://en.wikipedia.org/wiki/HMAC-based_One-time_Password_Algorithm](https://en.wikipedia.org/wiki/HMAC-based_One-time_Password_Algorithm).
+
+For more information about the Yubico OTP authentication mechanism read the „What is YubiKey OTP?“ article at [https://developers.yubico.com/OTP/](https://developers.yubico.com/OTP/).
 
 ## Installation
 
@@ -25,19 +32,15 @@ A collection of classes to provide second factor authentication (Yubico OTP, TOT
 
 ```{php}  
 require_once('path/to/vendor/autoload.php');
-
-use OathServerSuite;
 ```
 
 ---
 
 ### OTP (YubiCloud)
 
-For more information about the authentication mechanism read the „What is YubiKey OTP?“ article at [https://developers.yubico.com/OTP/](https://developers.yubico.com/OTP/).
-
 To use OTP you need YubiCloud access. You can get free API credentials from [https://upgrade.yubico.com/getapikey/](https://upgrade.yubico.com/getapikey/).
 
-##### Validating an OTP
+#### Validating an OTP
 
 ```{php}
 $otp = $_POST['otp'];
@@ -58,6 +61,142 @@ try {
 		// The given OTP is not valid.
 	}
 }
+```
+
+---
+
+### TOTP / HOTP (Google Authenticator style)
+
+#### Sharing the key name and secret
+
+To allow authentication the client and server has to share a secret. Usually the server dices a secret and displays it alltogether with the key name and the authentication mechanism as a QR code.
+
+[Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) and some other applications and hardware items – like the [Yubikey](https://www.yubico.com/products/yubikey-hardware/) – do not follow the standard by expecting the secrets not as hexadecimal but as [Base32](https://en.wikipedia.org/wiki/Base32) encoded data.
+
+##### TOTP (Time-based One-time Password Algorithm)
+
+```{php}
+use OathServerSuite\SecretQrCodeProvider\SecretQrCodeProvider;
+use OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode\QrCodeTotpBase32ContentEncoder;
+use QrCodeSuite\QrEncode\QrEncoder;
+
+// Initialize Oath QR code content encoder for TOTP (Time-based One-time Password Algorithm)
+$contentEncoder = new QrCodeTotpBase32ContentEncoder();
+
+// Setting the key name
+$keyName = 'Awesome Application';
+
+// Settings a secret
+// Attention: This is just an example value
+// Use a random value of a proper length stored with your user credentials
+$secret = openssl_random_pseudo_bytes(30);
+
+// Initialize the QR code provider
+$secretQrProvider = new SecretQrCodeProvider($contentEncoder, $keyName, $secret);
+
+// Configure the QR code renderer for your needs
+$secretQrProvider->getQrEncoder()
+	->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
+	->setTempDir('/path/to/a/writable/temp-dir');
+
+// Persist the QR code PNG to the filesystem
+$secretQrProvider->provideQrCode('/path/to/the/qrcode.png');
+```
+
+##### HOTP (HMAC-based One-time Password Algorithm)
+
+```{php}
+use OathServerSuite\SecretQrCodeProvider\SecretQrCodeProvider;
+use OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode\QrCodeTotpBase32ContentEncoder;
+use QrCodeSuite\QrEncode\QrEncoder;
+
+// Initialize Oath QR code content encoder for HOTP (HMAC-based One-time Password Algorithm)
+$contentEncoder = new QrCodeHotpBase32ContentEncoder();
+
+// Setting the key name
+$keyName = 'Awesome Application';
+
+// Settings a secret
+// Attention: This is just an example value
+// Use a random value of a proper length stored with your user credentials
+$secret = openssl_random_pseudo_bytes(30);
+
+// Initialize the QR code provider
+$secretQrProvider = new SecretQrCodeProvider($contentEncoder, $keyName, $secret);
+
+// Configure the QR code renderer for your needs
+$secretQrProvider->getQrEncoder()
+	->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
+	->setTempDir('/path/to/a/writable/temp-dir');
+
+// Persist the QR code PNG to the filesystem
+$secretQrProvider->provideQrCode('/path/to/the/qrcode.png');
+```
+
+---
+
+### TOTP / HOTP (following the standard)
+
+#### Sharing the key name and secret
+
+##### TOTP (Time-based One-time Password Algorithm)
+
+```{php}
+use OathServerSuite\SecretQrCodeProvider\SecretQrCodeProvider;
+use OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode\QrCodeTotpBase32ContentEncoder;
+use QrCodeSuite\QrEncode\QrEncoder;
+
+// Initialize Oath QR code content encoder for TOTP (Time-based One-time Password Algorithm)
+$contentEncoder = new QrCodeTotpContentEncoder();
+
+// Setting the key name
+$keyName = 'Awesome Application';
+
+// Settings a secret
+// Attention: This is just an example value
+// Use a random value of a proper length stored with your user credentials
+$secret = openssl_random_pseudo_bytes(30);
+
+// Initialize the QR code provider
+$secretQrProvider = new SecretQrCodeProvider($contentEncoder, $keyName, $secret);
+
+// Configure the QR code renderer for your needs
+$secretQrProvider->getQrEncoder()
+	->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
+	->setTempDir('/path/to/a/writable/temp-dir');
+
+// Persist the QR code PNG to the filesystem
+$secretQrProvider->provideQrCode('/path/to/the/qrcode.png');
+```
+
+##### HOTP (HMAC-based One-time Password Algorithm)
+
+```{php}
+use OathServerSuite\SecretQrCodeProvider\SecretQrCodeProvider;
+use OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode\QrCodeTotpBase32ContentEncoder;
+use QrCodeSuite\QrEncode\QrEncoder;
+
+// Initialize Oath QR code content encoder for HOTP (HMAC-based One-time Password Algorithm)
+$contentEncoder = new QrCodeHotpContentEncoder();
+
+// Setting the key name
+$keyName = 'Awesome Application';
+
+// Settings a secret
+// Attention: This is just an example value
+// Use a random value of a proper length stored with your user credentials
+$secret = openssl_random_pseudo_bytes(30);
+
+// Initialize the QR code provider
+$secretQrProvider = new SecretQrCodeProvider($contentEncoder, $keyName, $secret);
+
+// Configure the QR code renderer for your needs
+$secretQrProvider->getQrEncoder()
+	->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
+	->setTempDir('/path/to/a/writable/temp-dir');
+
+// Persist the QR code PNG to the filesystem
+$secretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 ```
 
 ## License

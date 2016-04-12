@@ -27,9 +27,8 @@
   },
   "require": {
     "php": ">=5.3",
-    "ext-gd": "*",
-    "ext-imagick": "*",
     "lib-curl": "*",
+    "markenwerk/qr-code-suite": "~2.0",
     "enygma/yubikey": "~3.0",
     "skleeschulte/base32": "*"
   },

@@ -18,7 +18,7 @@ class QrCodeTotpContentEncoder implements Base\QrCodeContentEncoderInterface
 	public function encode($keyName, $secret)
 	{
 		$secret = bin2hex($secret);
-		return 'otpauth://totp/' . $keyName . '?secret=' . $secret;
+		return 'otpauth://totp/' . rawurlencode($keyName) . '?secret=' . $secret;
 	}
 
 }

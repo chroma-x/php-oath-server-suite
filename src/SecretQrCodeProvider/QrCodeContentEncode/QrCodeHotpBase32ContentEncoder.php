@@ -21,7 +21,7 @@ class QrCodeHotpBase32ContentEncoder implements Base\QrCodeContentEncoderInterfa
 	{
 		$secret = bin2hex($secret);
 		$secret = Base32::encodeByteStr($secret);
-		return 'otpauth://hotp/' . $keyName . '?secret=' . $secret;
+		return 'otpauth://hotp/' . rawurlencode($keyName) . '?secret=' . $secret;
 	}
 
 }

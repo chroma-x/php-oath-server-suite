@@ -1,14 +1,20 @@
 # Oath Server Suite
 
+[![Build Status](https://travis-ci.org/markenwerk/php-oath-server-suite.svg?branch=master)](https://travis-ci.org/markenwerk/php-oath-server-suite)
+[![Code Climate](https://codeclimate.com/github/markenwerk/php-oath-server-suite/badges/gpa.svg)](https://codeclimate.com/github/markenwerk/php-oath-server-suite)
+[![Issue Count](https://codeclimate.com/github/markenwerk/php-oath-server-suite/badges/issue_count.svg)](https://codeclimate.com/github/markenwerk/php-oath-server-suite)
+[![Latest Stable Version](https://poser.pugx.org/markenwerk/oath-server-suite/v/stable)](https://packagist.org/packages/markenwerk/oath-server-suite)
+[![Total Downloads](https://poser.pugx.org/markenwerk/oath-server-suite/downloads)](https://packagist.org/packages/markenwerk/oath-server-suite)
+[![License](https://poser.pugx.org/markenwerk/oath-server-suite/license)](https://packagist.org/packages/markenwerk/oath-server-suite)
+
 A collection of classes to provide second factor authentication (Yubico OTP, TOTP, HOTP, GoogleAuthenticator) server-side.
 
 ## Installation
 
-```
-{json}
+```{json}
 {
    	"require": {
-        "markenwerk/oath-server-suite": "~0"
+        "markenwerk/oath-server-suite": "~1.0"
     }
 }
 ```
@@ -17,8 +23,7 @@ A collection of classes to provide second factor authentication (Yubico OTP, TOT
 
 ### Autoloading and namesapce
 
-```
-{php}  
+```{php}  
 require_once('path/to/vendor/autoload.php');
 
 use OathServerSuite;
@@ -34,8 +39,7 @@ To use OTP you need YubiCloud access. You can get free API credentials from [htt
 
 ##### Validating an OTP
 
-```
-{php}
+```{php}
 $otp = $_POST['otp'];
 $userPublicId = $fetchedFromDatabaseOrSimilar;
 
@@ -54,7 +58,6 @@ try {
 		// The given OTP is not valid.
 	}
 }
-
 ```
 
 ## License

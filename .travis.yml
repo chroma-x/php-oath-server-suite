@@ -1,5 +1,8 @@
 language: php
 
+before_script:
+  - printf "\n" | pecl install imagick
+
 branches:
   only:
     - master

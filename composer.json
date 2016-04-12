@@ -1,0 +1,35 @@
+{
+  "name": "markenwerk/oath-server-suite",
+  "type": "library",
+  "description": "A collection of classes to provide second factor authentication (Yubico OTP, TOTP, HOTP, GoogleAuthenticator) server-side.",
+  "keywords": [
+    "second factor authentication",
+    "oath",
+    "otp",
+    "totp",
+    "hotp",
+    "yubico",
+    "google authenticator"
+  ],
+  "homepage": "http://markenwerk.net/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Martin Brecht-Precht",
+      "email": "mb@markenwerk.net",
+      "homepage": "http://markenwerk.net"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "OathServerSuite\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=5.3",
+    "enygma/yubikey": "~3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.8"
+  }
+}

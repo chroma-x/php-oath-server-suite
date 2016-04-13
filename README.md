@@ -36,17 +36,17 @@ require_once('path/to/vendor/autoload.php');
 
 ---
 
-### OTP (YubiCloud)
+### Yubico OTP (YubiCloud)
 
-To use OTP you need YubiCloud access. You can get free API credentials from [https://upgrade.yubico.com/getapikey/](https://upgrade.yubico.com/getapikey/).
+To use Yubico OTP you need YubiCloud access. You can get free API credentials from [https://upgrade.yubico.com/getapikey/](https://upgrade.yubico.com/getapikey/).
 
-#### Validating an OTP
+#### Validating an Yubico OTP
 
 ```{php}
 $otp = $_POST['otp'];
 $userPublicId = $fetchedFromDatabaseOrSimilar;
 
-$validator = new OathServerSuite\Otp\Validator('yubiCloudClientId', 'yubiCloudSecretKey');
+$validator = new OathServerSuite\Validation\YubicoOtp\Validator('yubiCloudClientId', 'yubiCloudSecretKey');
 try {
 	$validator->validate($otp, $userPublicId);
 	// Validation was success e.g. no exception was thrown.
@@ -76,12 +76,12 @@ To allow authentication the client and server has to share a secret. Usually the
 ##### TOTP (Time-based One-time Password Algorithm)
 
 ```{php}
-use OathServerSuite\SecretQrCodeProvider\SecretQrCodeProvider;
-use OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode\QrCodeTotpBase32ContentEncoder;
+use OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpBase32SharedSecretUrlEncoder;
 use QrCodeSuite\QrEncode\QrEncoder;
 
-// Initialize Oath QR code content encoder for TOTP (Time-based One-time Password Algorithm)
-$contentEncoder = new QrCodeTotpBase32ContentEncoder();
+// Initialize Oath URL encoder for TOTP (Time-based One-time Password Algorithm)
+$contentEncoder = new TotpBase32SharedSecretUrlEncoder();
 
 // Setting the key name
 $keyName = 'Awesome Application';
@@ -89,29 +89,33 @@ $keyName = 'Awesome Application';
 // Setting a secret
 // Attention: This is just an example value
 // Use a random value of a proper length stored with your user credentials
-$secret = openssl_random_pseudo_bytes(30);
+$sharedSecret = openssl_random_pseudo_bytes(30);
 
-// Initialize the QR code provider
-$secretQrProvider = new SecretQrCodeProvider($contentEncoder, $keyName, $secret);
+// Getting the shared secret URL for usage wihtout QR code provision
+$sharedSecretUrl = $contentEncoder->encode($keyName, $sharedSecret);
+
+// Start QR code provision
+// Initialize the QR code provider with Oath URL encoder for TOTP
+$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new TotpBase32SharedSecretUrlEncoder(), $keyName, $sharedSecret);
 
 // Configure the QR code renderer for your needs
-$secretQrProvider->getQrEncoder()
+$sharedSecretQrProvider->getQrEncoder()
 	->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 	->setTempDir('/path/to/a/writable/temp-dir');
 
 // Persist the QR code PNG to the filesystem
-$secretQrProvider->provideQrCode('/path/to/the/qrcode.png');
+$sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 ```
 
 ##### HOTP (HMAC-based One-time Password Algorithm)
 
 ```{php}
-use OathServerSuite\SecretQrCodeProvider\SecretQrCodeProvider;
-use OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode\QrCodeTotpBase32ContentEncoder;
+use OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpBase32SharedSecretUrlEncoder;
 use QrCodeSuite\QrEncode\QrEncoder;
 
-// Initialize Oath QR code content encoder for HOTP (HMAC-based One-time Password Algorithm)
-$contentEncoder = new QrCodeHotpBase32ContentEncoder();
+// Initialize Oath URL encoder for HOTP (HMAC-based One-time Password Algorithm)
+$contentEncoder = new HotpBase32SharedSecretUrlEncoder();
 
 // Setting the key name
 $keyName = 'Awesome Application';
@@ -119,18 +123,22 @@ $keyName = 'Awesome Application';
 // Setting a secret
 // Attention: This is just an example value
 // Use a random value of a proper length stored with your user credentials
-$secret = openssl_random_pseudo_bytes(30);
+$sharedSecret = openssl_random_pseudo_bytes(30);
 
-// Initialize the QR code provider
-$secretQrProvider = new SecretQrCodeProvider($contentEncoder, $keyName, $secret);
+// Getting the shared secret URL for usage wihtout QR code provision
+$sharedSecretUrl = $contentEncoder->encode($keyName, $sharedSecret);
+
+// Start QR code provision
+// Initialize the QR code provider with Oath URL encoder for HOTP
+$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new HotpBase32SharedSecretUrlEncoder(), $keyName, $sharedSecret);
 
 // Configure the QR code renderer for your needs
-$secretQrProvider->getQrEncoder()
+$sharedSecretQrProvider->getQrEncoder()
 	->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 	->setTempDir('/path/to/a/writable/temp-dir');
 
 // Persist the QR code PNG to the filesystem
-$secretQrProvider->provideQrCode('/path/to/the/qrcode.png');
+$sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 ```
 
 ---
@@ -142,12 +150,12 @@ $secretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 ##### TOTP (Time-based One-time Password Algorithm)
 
 ```{php}
-use OathServerSuite\SecretQrCodeProvider\SecretQrCodeProvider;
-use OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode\QrCodeTotpBase32ContentEncoder;
+use OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpSharedSecretUrlEncoder;
 use QrCodeSuite\QrEncode\QrEncoder;
 
-// Initialize Oath QR code content encoder for TOTP (Time-based One-time Password Algorithm)
-$contentEncoder = new QrCodeTotpContentEncoder();
+// Initialize Oath URL encoder for TOTP (Time-based One-time Password Algorithm)
+$contentEncoder = new TotpSharedSecretUrlEncoder();
 
 // Setting the key name
 $keyName = 'Awesome Application';
@@ -155,29 +163,33 @@ $keyName = 'Awesome Application';
 // Setting a secret
 // Attention: This is just an example value
 // Use a random value of a proper length stored with your user credentials
-$secret = openssl_random_pseudo_bytes(30);
+$sharedSecret = openssl_random_pseudo_bytes(30);
 
-// Initialize the QR code provider
-$secretQrProvider = new SecretQrCodeProvider($contentEncoder, $keyName, $secret);
+// Getting the shared secret URL for usage wihtout QR code provision
+$sharedSecretUrl = $contentEncoder->encode($keyName, $sharedSecret);
+
+// Start QR code provision
+// Initialize the QR code provider with Oath URL encoder for TOTP
+$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new TotpSharedSecretUrlEncoder(), $keyName, $sharedSecret);
 
 // Configure the QR code renderer for your needs
-$secretQrProvider->getQrEncoder()
+$sharedSecretQrProvider->getQrEncoder()
 	->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 	->setTempDir('/path/to/a/writable/temp-dir');
 
 // Persist the QR code PNG to the filesystem
-$secretQrProvider->provideQrCode('/path/to/the/qrcode.png');
+$sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 ```
 
 ##### HOTP (HMAC-based One-time Password Algorithm)
 
 ```{php}
-use OathServerSuite\SecretQrCodeProvider\SecretQrCodeProvider;
-use OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode\QrCodeTotpBase32ContentEncoder;
+use OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpSharedSecretUrlEncoder;
 use QrCodeSuite\QrEncode\QrEncoder;
 
-// Initialize Oath QR code content encoder for HOTP (HMAC-based One-time Password Algorithm)
-$contentEncoder = new QrCodeHotpContentEncoder();
+// Initialize Oath URL encoder for HOTP (HMAC-based One-time Password Algorithm)
+$contentEncoder = new HotpSharedSecretUrlEncoder();
 
 // Setting the key name
 $keyName = 'Awesome Application';
@@ -185,18 +197,22 @@ $keyName = 'Awesome Application';
 // Setting a secret
 // Attention: This is just an example value
 // Use a random value of a proper length stored with your user credentials
-$secret = openssl_random_pseudo_bytes(30);
+$sharedSecret = openssl_random_pseudo_bytes(30);
 
-// Initialize the QR code provider
-$secretQrProvider = new SecretQrCodeProvider($contentEncoder, $keyName, $secret);
+// Getting the shared secret URL for usage wihtout QR code provision
+$sharedSecretUrl = $contentEncoder->encode($keyName, $sharedSecret);
+
+// Start QR code provision
+// Initialize the QR code provider with Oath URL encoder for HOTP
+$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new HotpSharedSecretUrlEncoder(), $keyName, $sharedSecret);
 
 // Configure the QR code renderer for your needs
-$secretQrProvider->getQrEncoder()
+$sharedSecretQrProvider->getQrEncoder()
 	->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 	->setTempDir('/path/to/a/writable/temp-dir');
 
 // Persist the QR code PNG to the filesystem
-$secretQrProvider->provideQrCode('/path/to/the/qrcode.png');
+$sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 ```
 
 ## License

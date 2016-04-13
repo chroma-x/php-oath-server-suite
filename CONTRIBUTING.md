@@ -68,6 +68,33 @@ Any bugfix that doesn’t include a test proving the existence of the bug being 
 
 We’ve found that test-first development really helps make features better architected and identifies potential edge cases earlier instead of later. Writing tests before the implementation is strongly encouraged.
 
+Sometimes testing is hard because it is not possible to create an environment on the developers machine to fulfill the softwares requirements in the middleware setup. For example installing imagick on Mac OS X could be a task straight out of hell. In this case it is useful to provide a out-of-the-box running machine setup like [docker](https://www.docker.com/) ot [vagrant](https://www.vagrantup.com/) and run tests on the virtual machine via the commandline interface.
+
+## Contributing requirements
+
+For development purposes there is a [vagrant](https://www.vagrantup.com/) setup included in the repo to fulfill the server side requirements easily. 
+
+### Installation and testing example (Mac OS X)
+
+#### Installation of vagrant
+
+Get your vagrant version from [https://www.vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html) and run the installer. 
+
+#### Starting the virtual machine and connect via SSH
+
+```
+cd php-oath-server-suite
+vagrant up
+vagrant ssh
+```
+
+#### Running the tests via command line interface
+
+```
+cd php-oath-server-suite
+phpunit --bootstrap vendor/autoload.php --configuration phpunit.xml.dist
+```
+
 ## Full example
 
 Here’s an example workflow for `php-oath-server-suite` hosted on Github, which is currently in version 2.0.x. Your username is `yourname` and you’re submitting a basic bugfix. 

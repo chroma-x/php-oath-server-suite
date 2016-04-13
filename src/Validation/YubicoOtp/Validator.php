@@ -1,6 +1,6 @@
 <?php
 
-namespace OathServerSuite\Otp;
+namespace OathServerSuite\Validation\YubicoOtp;
 
 use OathServerSuite\Exception\NetworkException;
 use OathServerSuite\Exception\ParserException;
@@ -10,7 +10,7 @@ use Yubikey\Validate;
 /**
  * Class Validator
  *
- * @package OathServerSuite\Otp
+ * @package OathServerSuite\YubicoOtp
  */
 class Validator
 {
@@ -38,7 +38,7 @@ class Validator
 	/**
 	 * @var bool
 	 */
-	private $otpValid = false;
+	private $valid = false;
 
 	/**
 	 * Validator constructor.
@@ -83,11 +83,11 @@ class Validator
 		} catch (\Exception $exception) {
 			throw new NetworkException('YubiCloud webservice access failed.', 0, $exception);
 		}
-		$this->otpValid = $response->success();
-		if (!$this->otpValid) {
+		$this->valid = $response->success();
+		if (!$this->valid) {
 			throw new ValidationFailedException('OTP invalid.', 3);
 		}
-		return $this->otpValid;
+		return $this->valid;
 	}
 
 	/**
@@ -101,9 +101,9 @@ class Validator
 	/**
 	 * @return boolean
 	 */
-	public function isOtpValid()
+	public function isValid()
 	{
-		return $this->otpValid;
+		return $this->valid;
 	}
 
 	/**

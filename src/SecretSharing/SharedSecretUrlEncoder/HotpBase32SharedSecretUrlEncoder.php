@@ -1,15 +1,15 @@
 <?php
 
-namespace OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode;
+namespace OathServerSuite\SecretSharing\SharedSecretUrlEncoder;
 
 use SKleeschulte\Base32;
 
 /**
- * Class QrCodeHotpBase32ContentEncoder
+ * Class HotpBase32SharedSecretUrlEncoder
  *
- * @package OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode
+ * @package OathServerSuite\SharedSecretUrlEncoder
  */
-class QrCodeHotpBase32ContentEncoder implements Base\QrCodeContentEncoderInterface
+class HotpBase32SharedSecretUrlEncoder implements Base\SharedSecretUrlEncoderInterface
 {
 
 	/**

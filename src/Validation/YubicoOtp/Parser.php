@@ -1,15 +1,15 @@
 <?php
 
-namespace OathServerSuite\Otp;
+namespace OathServerSuite\Validation\YubicoOtp;
 
 use OathServerSuite\Exception\ParserException;
 
 /**
- * Class OtpParser
+ * Class Parser
  *
  * Based on the official [YubiCloud PHP client](https://github.com/Yubico/yubico-php-client/blob/master/YubiCloud.php)
  *
- * @package Conductor\Core\Authentication\Yubico
+ * @package OathServerSuite\YubicoOtp
  */
 class Parser
 {

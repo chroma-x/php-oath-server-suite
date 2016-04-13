@@ -1,13 +1,13 @@
 <?php
 
-namespace OathServerSuite\Otp;
+namespace OathServerSuite\Validation\YubicoOtp;
 
 use OathServerSuite\Exception\ParserException;
 
 /**
- * Class OtpParserTest
+ * Class ParserTest
  *
- * @package OathServerSuite\Otp
+ * @package OathServerSuite\YubicoOtp
  */
 class ParserTest extends \PHPUnit_Framework_TestCase
 {

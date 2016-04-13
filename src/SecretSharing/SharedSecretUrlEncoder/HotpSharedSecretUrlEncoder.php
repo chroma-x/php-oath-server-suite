@@ -1,13 +1,13 @@
 <?php
 
-namespace OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode;
+namespace OathServerSuite\SecretSharing\SharedSecretUrlEncoder;
 
 /**
- * Class QrCodeHotpContentEncoder
+ * Class HotpSharedSecretUrlEncoder
  *
- * @package OathServerSuite\SecretQrCodeProvider\QrCodeContentEncode
+ * @package OathServerSuite\SharedSecretUrlEncoder
  */
-class QrCodeHotpContentEncoder implements Base\QrCodeContentEncoderInterface
+class HotpSharedSecretUrlEncoder implements Base\SharedSecretUrlEncoderInterface
 {
 
 	/**

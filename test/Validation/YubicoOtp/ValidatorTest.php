@@ -1,13 +1,13 @@
 <?php
 
-namespace OathServerSuite\Otp;
+namespace OathServerSuite\Validation\YubicoOtp;
 
 use OathServerSuite\Exception\ValidationFailedException;
 
 /**
  * Class ValidatorTest
  *
- * @package OathServerSuite\Otp
+ * @package OathServerSuite\YubicoOtp
  */
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {

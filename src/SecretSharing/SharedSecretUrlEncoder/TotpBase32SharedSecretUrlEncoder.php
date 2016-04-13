@@ -20,7 +20,7 @@ class TotpBase32SharedSecretUrlEncoder implements Base\SharedSecretUrlEncoderInt
 	public function encode($keyName, $sharedSecret)
 	{
 		$sharedSecret = bin2hex($sharedSecret);
-		$sharedSecret = Base32::encodeByteStr($sharedSecret);
+		$sharedSecret = Base32::encodeByteStr($sharedSecret, true);
 		return 'otpauth://totp/' . rawurlencode($keyName) . '?secret=' . $sharedSecret;
 	}
 

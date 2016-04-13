@@ -4,7 +4,6 @@ namespace OathServerSuite\Validation\YubicoOtp;
 
 use OathServerSuite\Exception\NetworkException;
 use OathServerSuite\Exception\ParserException;
-use OathServerSuite\Exception\ValidationFailedException;
 use Yubikey\Validate;
 
 /**
@@ -50,14 +49,12 @@ class Validator
 	/**
 	 * Validates the OTP against the YubiCloud
 	 *
-	 * If the given OTP is malformed or invalid a ValidationFailedException is thrown.
 	 * If connecting the YubiCloud webservice fails a NetworkException is thrown.
 	 *
 	 * @param string $otp
 	 * @param string $publicId
 	 * @return bool
 	 * @throws NetworkException
-	 * @throws ValidationFailedException
 	 */
 	public function validate($otp, $publicId)
 	{
@@ -65,10 +62,10 @@ class Validator
 		try {
 			$this->otpParser->parse($otp);
 		} catch (ParserException $parserException) {
-			throw new ValidationFailedException('The given OTP is malformed.', 1, $parserException);
+			return false;
 		}
 		if ($this->otpParser->getPublicId() !== $publicId) {
-			throw new ValidationFailedException('Public ID mismatch.', 2);
+			return false;
 		}
 		try {
 			$yubicoApi = new Validate($this->yubiCloudSecretKey, $this->yubiCloudClientId);
@@ -77,9 +74,6 @@ class Validator
 			throw new NetworkException('YubiCloud webservice access failed.', 0, $exception);
 		}
 		$this->valid = $response->success();
-		if (!$this->valid) {
-			throw new ValidationFailedException('OTP invalid.', 3);
-		}
 		return $this->valid;
 	}
 

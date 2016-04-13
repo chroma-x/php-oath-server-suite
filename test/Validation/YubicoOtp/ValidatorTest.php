@@ -2,8 +2,6 @@
 
 namespace OathServerSuite\Validation\YubicoOtp;
 
-use OathServerSuite\Exception\ValidationFailedException;
-
 /**
  * Class ValidatorTest
  *
@@ -16,17 +14,15 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
 	public function testValidateMalformed()
 	{
-		$this->setExpectedException(get_class(new ValidationFailedException()));
 		$validator = new Validator('clientId', 'secretKey');
-		$validator->validate('', self::PUBLIC_ID);
-		$validator->validate('12345678', self::PUBLIC_ID);
-	}
-
-	public function testValidateWellformed()
-	{
-		$this->setExpectedException(get_class(new ValidationFailedException()));
-		$validator = new Validator('clientId', 'secretKey');
-		$validator->validate('ccccccfcttfikkgitudletutjneikkrfcugnuhikdbhj', self::PUBLIC_ID);
+		// Malformed
+		$isValid = $validator->validate('', self::PUBLIC_ID);
+		$this->assertEquals(false, $isValid);
+		$isValid = $validator->validate('12345678', self::PUBLIC_ID);
+		$this->assertEquals(false, $isValid);
+		// Wellformed
+		$isValid = $validator->validate('ccccccfcttfikkgitudletutjneikkrfcugnuhikdbhj', self::PUBLIC_ID);
+		$this->assertEquals(false, $isValid);
 	}
 
 }

@@ -40,7 +40,7 @@ require_once('path/to/vendor/autoload.php');
 
 To use Yubico OTP you need YubiCloud access. You can get free API credentials from [https://upgrade.yubico.com/getapikey/](https://upgrade.yubico.com/getapikey/).
 
-#### Validating an Yubico OTP
+#### Validating a Yubico one time password
 
 ```{php}
 $otp = $_POST['otp'];
@@ -49,17 +49,13 @@ $userPublicId = 'fetchedFromDatabaseOrSimilar';
 $validator = new OathServerSuite\Validation\YubicoOtp\Validator('yubiCloudClientId', 'yubiCloudSecretKey');
 try {
 	$validator->validate($otp, $userPublicId);
-	// Validation was success e.g. no exception was thrown.
 } catch (OathServerSuite\Exception\NetworkException $exception) {
 	// Accessing the YubiCloud webservice failed.
-} catch (OathServerSuite\Exception\ValidationFailedException $exception) {
-	if ($exception->getCode() == 1) {
-		// The given OTP is not wellformed.
-	} else if ($exception->getCode() == 2) {
-		// The given OTP does not match the users public ID.
-	} else if ($exception->getCode() == 3) {
-		// The given OTP is not valid.
-	}
+}
+if ($validator->isValid()) {
+	// Validation was successful
+} else {
+	// Validation failed
 }
 ```
 
@@ -139,6 +135,41 @@ $sharedSecretQrProvider->getQrEncoder()
 
 // Persist the QR code PNG to the filesystem
 $sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
+```
+
+#### Validating a Oath one time password
+
+##### TOTP (Time-based One-time Password Algorithm)
+
+```
+{php}
+$totp = $_POST['totp'];
+$sharedSecret = 'fetchedFromDatabaseOrSimilar';
+
+$validator = new OathServerSuite\Validation\Oath\TotpValidator();
+$validator->validate($totp, $sharedSecret);
+if ($validator->isValid()) {
+	// Validation was successful
+} else {
+	// Validation failed
+}
+```
+
+##### HOTP (HMAC-based One-time Password Algorithm)
+
+```
+{php}
+$hotp = $_POST['hotp'];
+$sharedSecret = 'fetchedFromDatabaseOrSimilar';
+$counter = (int)'fetchedFromDatabaseOrSimilar';
+
+$validator = new OathServerSuite\Validation\Oath\HotpValidator();
+$validator->validate($hotp, $sharedSecret, $counter);
+if ($validator->isValid()) {
+	// Validation was successful
+} else {
+	// Validation failed
+}
 ```
 
 ---

@@ -12,7 +12,7 @@ use QrCodeSuite\QrRender\QrCodeRendererPng;
 /**
  * Class SharedSecretQrCodeProviderTest
  *
- * @package OathServerSuite\SharedSecretQrCodeProvider
+ * @package OathServerSuite\SecretSharing\SharedSecretQrCodeProvider
  */
 class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 {

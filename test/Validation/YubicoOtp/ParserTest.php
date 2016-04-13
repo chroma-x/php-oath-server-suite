@@ -7,7 +7,7 @@ use OathServerSuite\Exception\ParserException;
 /**
  * Class ParserTest
  *
- * @package OathServerSuite\YubicoOtp
+ * @package OathServerSuite\Validation\YubicoOtp
  */
 class ParserTest extends \PHPUnit_Framework_TestCase
 {

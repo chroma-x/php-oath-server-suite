@@ -3,9 +3,9 @@
 namespace OathServerSuite\SecretSharing\SharedSecretUrlEncoder;
 
 /**
- * Class SharedSecretQrCodeProviderTest
+ * Class SharedSecretUrlEncoderTest
  *
- * @package OathServerSuite\SharedSecretQrCodeProvider
+ * @package OathServerSuite\SecretSharing\SharedSecretUrlEncoder
  */
 class SharedSecretUrlEncoderTest extends \PHPUnit_Framework_TestCase
 {

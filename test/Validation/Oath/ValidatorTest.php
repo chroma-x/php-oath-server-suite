@@ -3,9 +3,9 @@
 namespace OathServerSuite\Validation\Oath;
 
 /**
- * Class TotpValidatorTest
+ * Class ValidatorTest
  *
- * @package OathServerSuite\Validation\GoogleAuthenticator
+ * @package OathServerSuite\Validation\Oath
  */
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {

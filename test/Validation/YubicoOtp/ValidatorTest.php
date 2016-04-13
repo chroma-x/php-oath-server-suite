@@ -5,7 +5,7 @@ namespace OathServerSuite\Validation\YubicoOtp;
 /**
  * Class ValidatorTest
  *
- * @package OathServerSuite\YubicoOtp
+ * @package OathServerSuite\Validation\YubicoOtp
  */
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {

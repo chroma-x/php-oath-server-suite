@@ -37,7 +37,6 @@ class HotpValidator extends Base\OathBaseValidator
 	{
 		$sharedSecret = bin2hex($sharedSecret);
 		$validHotp = $this->calculateValidHotp($sharedSecret, $counter);
-		// TODO: Replace method
 		$this->valid = ($hotp === $validHotp);
 		return $this->valid;
 	}

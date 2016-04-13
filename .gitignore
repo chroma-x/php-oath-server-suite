@@ -1,3 +1,4 @@
 /vendor
-composer.lock
-vagrantfile
+/.vagrant
+/composer.lock
+/vagrantfile

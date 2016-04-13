@@ -53,7 +53,6 @@ class TotpValidator extends Base\OathBaseValidator
 	{
 		$sharedSecret = bin2hex($sharedSecret);
 		$validTotp = $this->calculateValidTotp($sharedSecret);
-		// TODO: Replace method
 		$this->valid = ($totp === $validTotp);
 		return $this->valid;
 	}

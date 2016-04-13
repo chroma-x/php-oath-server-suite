@@ -26,11 +26,6 @@ class Validator
 	private $yubiCloudSecretKey;
 
 	/**
-	 * @var string
-	 */
-	private $otp;
-
-	/**
 	 * @var Parser
 	 */
 	private $otpParser;
@@ -55,8 +50,7 @@ class Validator
 	/**
 	 * Validates the OTP against the YubiCloud
 	 *
-	 * If the given OTP is malformed or invalid a ValidationFailedException is thrown. If a publicId is given, it is
-	 * checked against the public ID part of the OTP. If they does not match a ValidationFailedException is thrown.
+	 * If the given OTP is malformed or invalid a ValidationFailedException is thrown.
 	 * If connecting the YubiCloud webservice fails a NetworkException is thrown.
 	 *
 	 * @param string $otp
@@ -65,16 +59,15 @@ class Validator
 	 * @throws NetworkException
 	 * @throws ValidationFailedException
 	 */
-	public function validate($otp, $publicId = null)
+	public function validate($otp, $publicId)
 	{
-		$this->otp = $otp;
 		$this->otpParser = new Parser();
 		try {
-			$this->otpParser->parse($this->otp);
+			$this->otpParser->parse($otp);
 		} catch (ParserException $parserException) {
 			throw new ValidationFailedException('The given OTP is malformed.', 1, $parserException);
 		}
-		if (!is_null($publicId) && $this->otpParser->getPublicId() !== $publicId) {
+		if ($this->otpParser->getPublicId() !== $publicId) {
 			throw new ValidationFailedException('Public ID mismatch.', 2);
 		}
 		try {
@@ -104,14 +97,6 @@ class Validator
 	public function isValid()
 	{
 		return $this->valid;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getOtp()
-	{
-		return $this->otp;
 	}
 
 }

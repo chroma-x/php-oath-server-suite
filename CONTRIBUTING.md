@@ -91,7 +91,7 @@ vagrant ssh
 #### Running the tests via command line interface
 
 ```
-cd php-oath-server-suite
+cd /var/www/php-oath-server-suite
 phpunit --bootstrap vendor/autoload.php --configuration phpunit.xml.dist
 ```
 

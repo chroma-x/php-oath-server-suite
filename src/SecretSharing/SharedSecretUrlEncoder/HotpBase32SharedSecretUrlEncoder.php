@@ -14,14 +14,14 @@ class HotpBase32SharedSecretUrlEncoder implements Base\SharedSecretUrlEncoderInt
 
 	/**
 	 * @param string $keyName
-	 * @param string $secret
+	 * @param string $sharedSecret
 	 * @return string
 	 */
-	public function encode($keyName, $secret)
+	public function encode($keyName, $sharedSecret)
 	{
-		$secret = bin2hex($secret);
-		$secret = Base32::encodeByteStr($secret);
-		return 'otpauth://hotp/' . rawurlencode($keyName) . '?secret=' . $secret;
+		$sharedSecret = bin2hex($sharedSecret);
+		$sharedSecret = Base32::encodeByteStr($sharedSecret);
+		return 'otpauth://hotp/' . rawurlencode($keyName) . '?secret=' . $sharedSecret;
 	}
 
 }

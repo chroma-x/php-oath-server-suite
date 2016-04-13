@@ -12,9 +12,9 @@ interface SharedSecretUrlEncoderInterface
 
 	/**
 	 * @param string $keyName
-	 * @param string $secret
+	 * @param string $sharedSecret
 	 * @return string
 	 */
-	public function encode($keyName, $secret);
+	public function encode($keyName, $sharedSecret);
 
 }

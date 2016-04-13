@@ -30,7 +30,7 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		$sharedSecretQrCodeProvider->getQrEncoder()
 			->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 			->setTempDir(__DIR__ . '/tmp/');
-		$qrCodeOutputPath = __DIR__ . '/tmp/test.png';
+		$qrCodeOutputPath = __DIR__ . '/tmp/test-hotp-base32.png';
 		$sharedSecretQrCodeProvider->provideQrCode($qrCodeOutputPath);
 
 		// Test QR code output file exists
@@ -58,7 +58,7 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		$sharedSecretQrCodeProvider->getQrEncoder()
 			->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 			->setTempDir(__DIR__ . '/tmp/');
-		$qrCodeOutputPath = __DIR__ . '/tmp/test.png';
+		$qrCodeOutputPath = __DIR__ . '/tmp/test-totp-base32.png';
 		$sharedSecretQrCodeProvider->provideQrCode($qrCodeOutputPath);
 
 		// Test QR code output file exists
@@ -86,7 +86,7 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		$sharedSecretQrCodeProvider->getQrEncoder()
 			->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 			->setTempDir(__DIR__ . '/tmp/');
-		$qrCodeOutputPath = __DIR__ . '/tmp/test.png';
+		$qrCodeOutputPath = __DIR__ . '/tmp/test-hotp.png';
 		$sharedSecretQrCodeProvider->provideQrCode($qrCodeOutputPath);
 
 		// Test QR code output file exists
@@ -114,7 +114,7 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		$sharedSecretQrCodeProvider->getQrEncoder()
 			->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 			->setTempDir(__DIR__ . '/tmp/');
-		$qrCodeOutputPath = __DIR__ . '/tmp/test.png';
+		$qrCodeOutputPath = __DIR__ . '/tmp/test-totp.png';
 		$sharedSecretQrCodeProvider->provideQrCode($qrCodeOutputPath);
 
 		// Test QR code output file exists

@@ -1,0 +1,34 @@
+<?php
+
+namespace OathServerSuite\Validation\Oath;
+
+/**
+ * Class TotpValidatorTest
+ *
+ * @package OathServerSuite\Validation\GoogleAuthenticator
+ */
+class ValidatorTest extends \PHPUnit_Framework_TestCase
+{
+
+	const TOTP = '847755';
+	const HOTP = '092615';
+	const SHARED_SECRET = '9nxnvWgVw5Ca2YLUIkou2CkV2K15QI';
+	const COUNTER = 3;
+
+	public function testValidateTotp()
+	{
+		$validator = new TotpValidator();
+		$isValid = $validator->validate(self::TOTP, self::SHARED_SECRET);
+		$this->assertEquals(false, $isValid);
+		$this->assertEquals($isValid, $validator->isValid());
+	}
+
+	public function testValidateHotp()
+	{
+		$validator = new HotpValidator();
+		$isValid = $validator->validate(self::HOTP, self::SHARED_SECRET, self::COUNTER);
+		$this->assertEquals(false, $isValid);
+		$this->assertEquals($isValid, $validator->isValid());
+	}
+
+}

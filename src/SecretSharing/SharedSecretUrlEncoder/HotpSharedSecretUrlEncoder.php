@@ -12,13 +12,13 @@ class HotpSharedSecretUrlEncoder implements Base\SharedSecretUrlEncoderInterface
 
 	/**
 	 * @param string $keyName
-	 * @param string $secret
+	 * @param string $sharedSecret
 	 * @return string
 	 */
-	public function encode($keyName, $secret)
+	public function encode($keyName, $sharedSecret)
 	{
-		$secret = bin2hex($secret);
-		return 'otpauth://hotp/' . rawurlencode($keyName) . '?secret=' . $secret;
+		$sharedSecret = bin2hex($sharedSecret);
+		return 'otpauth://hotp/' . rawurlencode($keyName) . '?secret=' . $sharedSecret;
 	}
 
 }

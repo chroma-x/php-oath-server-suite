@@ -6,7 +6,7 @@
 [![Total Downloads](https://poser.pugx.org/markenwerk/oath-server-suite/downloads)](https://packagist.org/packages/markenwerk/oath-server-suite)
 [![License](https://poser.pugx.org/markenwerk/oath-server-suite/license)](https://packagist.org/packages/markenwerk/oath-server-suite)
 
-A collection of classes to provide second factor authentication (Yubico OTP, TOTP, HOTP, GoogleAuthenticator) server-side.
+A collection of classes to provide second factor authentication like Yubico OTP (Yubikey), Oath (TOTP, HOTP, GoogleAuthenticator) server-side.
 
 For more information about Oath check out [https://openauthentication.org/](https://openauthentication.org/).
 

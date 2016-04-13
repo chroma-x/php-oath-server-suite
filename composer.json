@@ -1,7 +1,7 @@
 {
   "name": "markenwerk/oath-server-suite",
   "type": "library",
-  "description": "A collection of classes to provide second factor authentication (Yubico OTP, TOTP, HOTP, GoogleAuthenticator) server-side.",
+  "description": "A collection of classes to provide second factor authentication like Yubico OTP (Yubikey), Oath (TOTP, HOTP, GoogleAuthenticator) server-side.",
   "keywords": [
     "second factor authentication",
     "oath",

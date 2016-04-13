@@ -10,9 +10,9 @@ A collection of classes to provide second factor authentication (Yubico OTP, TOT
 
 For more information about Oath check out [https://openauthentication.org/](https://openauthentication.org/).
 
-More information about TOTP (Time-based One-time Password Algorithm) can be found at [https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm](https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm).
+More information about TOTP (Time-based One-time Password Algorithm) can be found at [Wikipedia](https://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm).
 
-More information about HOTP (HMAC-based One-time Password Algorithm) can be found at [https://en.wikipedia.org/wiki/HMAC-based_One-time_Password_Algorithm](https://en.wikipedia.org/wiki/HMAC-based_One-time_Password_Algorithm).
+More information about HOTP (HMAC-based One-time Password Algorithm) can be found at [Wikipedia](https://en.wikipedia.org/wiki/HMAC-based_One-time_Password_Algorithm).
 
 For more information about the Yubico OTP authentication mechanism read the „What is YubiKey OTP?“ article at [https://developers.yubico.com/OTP/](https://developers.yubico.com/OTP/).
 
@@ -49,13 +49,13 @@ $userPublicId = 'fetchedFromDatabaseOrSimilar';
 $validator = new OathServerSuite\Validation\YubicoOtp\Validator('yubiCloudClientId', 'yubiCloudSecretKey');
 try {
 	$validator->validate($otp, $userPublicId);
+	if ($validator->isValid()) {
+		// Validation was successful
+	} else {
+		// Validation failed
+	}
 } catch (OathServerSuite\Exception\NetworkException $exception) {
 	// Accessing the YubiCloud webservice failed.
-}
-if ($validator->isValid()) {
-	// Validation was successful
-} else {
-	// Validation failed
 }
 ```
 
@@ -141,8 +141,7 @@ $sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 
 ##### TOTP (Time-based One-time Password Algorithm)
 
-```
-{php}
+```{php}
 $totp = $_POST['totp'];
 $sharedSecret = 'fetchedFromDatabaseOrSimilar';
 
@@ -157,8 +156,7 @@ if ($validator->isValid()) {
 
 ##### HOTP (HMAC-based One-time Password Algorithm)
 
-```
-{php}
+```{php}
 $hotp = $_POST['hotp'];
 $sharedSecret = 'fetchedFromDatabaseOrSimilar';
 $counter = (int)'fetchedFromDatabaseOrSimilar';
@@ -250,8 +248,7 @@ $sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 
 ##### TOTP (Time-based One-time Password Algorithm)
 
-```
-{php}
+```{php}
 $totp = $_POST['totp'];
 $sharedSecret = 'fetchedFromDatabaseOrSimilar';
 
@@ -266,8 +263,7 @@ if ($validator->isValid()) {
 
 ##### HOTP (HMAC-based One-time Password Algorithm)
 
-```
-{php}
+```{php}
 $hotp = $_POST['hotp'];
 $sharedSecret = 'fetchedFromDatabaseOrSimilar';
 $counter = (int)'fetchedFromDatabaseOrSimilar';

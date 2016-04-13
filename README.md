@@ -215,6 +215,11 @@ $sharedSecretQrProvider->getQrEncoder()
 $sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 ```
 
+## Contribution
+
+Contributing to our projects is always very appreciated.  
+**But: please follow the contribution guidelines written down in the `CONTRIBUTING.md` document.**
+
 ## License
 
 Oath Server Suite is under the MIT license.

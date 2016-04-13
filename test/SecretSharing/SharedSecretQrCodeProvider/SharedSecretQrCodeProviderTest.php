@@ -39,7 +39,7 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		// Test QR code output file mesaurement
 		$blockSize = ceil(1000 / ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN));
 		$symbolWidth = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
-		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
+		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getHeight() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
 		$imageSize = getimagesize($qrCodeOutputPath);
 		$this->assertEquals($symbolWidth, $imageSize[0]);
 		$this->assertEquals($symbolHeight, $imageSize[1]);
@@ -67,7 +67,7 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		// Test QR code output file mesaurement
 		$blockSize = ceil(1000 / ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN));
 		$symbolWidth = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
-		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
+		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getHeight() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
 		$imageSize = getimagesize($qrCodeOutputPath);
 		$this->assertEquals($symbolWidth, $imageSize[0]);
 		$this->assertEquals($symbolHeight, $imageSize[1]);
@@ -95,7 +95,7 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		// Test QR code output file mesaurement
 		$blockSize = ceil(1000 / ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN));
 		$symbolWidth = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
-		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
+		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getHeight() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
 		$imageSize = getimagesize($qrCodeOutputPath);
 		$this->assertEquals($symbolWidth, $imageSize[0]);
 		$this->assertEquals($symbolHeight, $imageSize[1]);
@@ -123,7 +123,7 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		// Test QR code output file mesaurement
 		$blockSize = ceil(1000 / ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN));
 		$symbolWidth = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
-		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
+		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getHeight() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
 		$imageSize = getimagesize($qrCodeOutputPath);
 		$this->assertEquals($symbolWidth, $imageSize[0]);
 		$this->assertEquals($symbolHeight, $imageSize[1]);

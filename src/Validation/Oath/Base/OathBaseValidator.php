@@ -44,8 +44,8 @@ abstract class OathBaseValidator
 	 */
 	private function hashHmac($secret, $counter)
 	{
-		$bin_counter = pack('N*', 0) . pack('N*', $counter);
-		$hash = hash_hmac('sha1', $bin_counter, $secret, true);
+		$binCounter = pack('N*', 0) . pack('N*', $counter);
+		$hash = hash_hmac('sha1', $binCounter, $secret, true);
 		return $hash;
 	}
 

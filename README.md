@@ -61,7 +61,7 @@ if ($validator->isValid()) {
 
 ---
 
-### TOTP / HOTP (Google Authenticator style)
+### Oath – Google Authenticator style
 
 #### Sharing the key name and secret
 
@@ -174,7 +174,7 @@ if ($validator->isValid()) {
 
 ---
 
-### TOTP / HOTP (following the standard)
+### Oath – following the standard
 
 #### Sharing the key name and secret
 
@@ -244,6 +244,41 @@ $sharedSecretQrProvider->getQrEncoder()
 
 // Persist the QR code PNG to the filesystem
 $sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
+```
+
+#### Validating a Oath one time password
+
+##### TOTP (Time-based One-time Password Algorithm)
+
+```
+{php}
+$totp = $_POST['totp'];
+$sharedSecret = 'fetchedFromDatabaseOrSimilar';
+
+$validator = new OathServerSuite\Validation\Oath\TotpValidator();
+$validator->validate($totp, $sharedSecret);
+if ($validator->isValid()) {
+	// Validation was successful
+} else {
+	// Validation failed
+}
+```
+
+##### HOTP (HMAC-based One-time Password Algorithm)
+
+```
+{php}
+$hotp = $_POST['hotp'];
+$sharedSecret = 'fetchedFromDatabaseOrSimilar';
+$counter = (int)'fetchedFromDatabaseOrSimilar';
+
+$validator = new OathServerSuite\Validation\Oath\HotpValidator();
+$validator->validate($hotp, $sharedSecret, $counter);
+if ($validator->isValid()) {
+	// Validation was successful
+} else {
+	// Validation failed
+}
 ```
 
 ## Contribution

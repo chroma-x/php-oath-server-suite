@@ -7,7 +7,6 @@ use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpSharedSecretUrlEnco
 use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpBase32SharedSecretUrlEncoder;
 use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpSharedSecretUrlEncoder;
 use QrCodeSuite\QrEncode\QrEncoder;
-use QrCodeSuite\QrRender\QrCodeRendererPng;
 
 /**
  * Class SharedSecretQrCodeProviderTest
@@ -37,12 +36,9 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		$this->assertFileExists($qrCodeOutputPath);
 
 		// Test QR code output file mesaurement
-		$blockSize = ceil(1000 / ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN));
-		$symbolWidth = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
-		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getHeight() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
 		$imageSize = getimagesize($qrCodeOutputPath);
-		$this->assertEquals($symbolWidth, $imageSize[0]);
-		$this->assertEquals($symbolHeight, $imageSize[1]);
+		$this->assertEquals($sharedSecretQrCodeProvider->getQrRenderer()->getWidth(), $imageSize[0]);
+		$this->assertEquals($sharedSecretQrCodeProvider->getQrRenderer()->getHeight(), $imageSize[1]);
 
 		// Remove test QR code output file
 		unlink($qrCodeOutputPath);
@@ -65,12 +61,9 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		$this->assertFileExists($qrCodeOutputPath);
 
 		// Test QR code output file mesaurement
-		$blockSize = ceil(1000 / ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN));
-		$symbolWidth = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
-		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getHeight() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
 		$imageSize = getimagesize($qrCodeOutputPath);
-		$this->assertEquals($symbolWidth, $imageSize[0]);
-		$this->assertEquals($symbolHeight, $imageSize[1]);
+		$this->assertEquals($sharedSecretQrCodeProvider->getQrRenderer()->getWidth(), $imageSize[0]);
+		$this->assertEquals($sharedSecretQrCodeProvider->getQrRenderer()->getHeight(), $imageSize[1]);
 
 		// Remove test QR code output file
 		unlink($qrCodeOutputPath);
@@ -93,12 +86,9 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		$this->assertFileExists($qrCodeOutputPath);
 
 		// Test QR code output file mesaurement
-		$blockSize = ceil(1000 / ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN));
-		$symbolWidth = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
-		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getHeight() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
 		$imageSize = getimagesize($qrCodeOutputPath);
-		$this->assertEquals($symbolWidth, $imageSize[0]);
-		$this->assertEquals($symbolHeight, $imageSize[1]);
+		$this->assertEquals($sharedSecretQrCodeProvider->getQrRenderer()->getWidth(), $imageSize[0]);
+		$this->assertEquals($sharedSecretQrCodeProvider->getQrRenderer()->getHeight(), $imageSize[1]);
 
 		// Remove test QR code output file
 		unlink($qrCodeOutputPath);
@@ -121,12 +111,9 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		$this->assertFileExists($qrCodeOutputPath);
 
 		// Test QR code output file mesaurement
-		$blockSize = ceil(1000 / ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN));
-		$symbolWidth = ($sharedSecretQrCodeProvider->getQrCode()->getWidth() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
-		$symbolHeight = ($sharedSecretQrCodeProvider->getQrCode()->getHeight() + 2 * QrCodeRendererPng::MARGIN) * $blockSize;
 		$imageSize = getimagesize($qrCodeOutputPath);
-		$this->assertEquals($symbolWidth, $imageSize[0]);
-		$this->assertEquals($symbolHeight, $imageSize[1]);
+		$this->assertEquals($sharedSecretQrCodeProvider->getQrRenderer()->getWidth(), $imageSize[0]);
+		$this->assertEquals($sharedSecretQrCodeProvider->getQrRenderer()->getHeight(), $imageSize[1]);
 
 		// Remove test QR code output file
 		unlink($qrCodeOutputPath);

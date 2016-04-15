@@ -28,11 +28,12 @@
   "require": {
     "php": ">=5.3",
     "lib-curl": "*",
-    "markenwerk/qr-code-suite": "~3.0",
+    "markenwerk/qr-code-suite": "dev-master",
     "enygma/yubikey": "~3.0",
     "skleeschulte/base32": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.8"
+    "phpunit/phpunit": "~4.8",
+    "codeclimate/php-test-reporter": "dev-master"
   }
 }

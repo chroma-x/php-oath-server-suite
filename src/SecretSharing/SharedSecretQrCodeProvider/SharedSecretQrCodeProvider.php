@@ -36,6 +36,11 @@ class SharedSecretQrCodeProvider
 	private $qrEncoder;
 
 	/**
+	 * @var QrCodeRendererPng
+	 */
+	private $qrRenderer;
+
+	/**
 	 * @var string
 	 */
 	private $qrCodeContents;
@@ -68,8 +73,8 @@ class SharedSecretQrCodeProvider
 	{
 		$this->qrCodeContents = $this->contentEncoder->encode($this->keyName, $this->secret);
 		$this->qrCode = $this->qrEncoder->encodeQrCode($this->qrCodeContents);
-		$qrRenderer = new QrCodeRendererPng();
-		$qrRenderer->render($this->qrCode, $path);
+		$this->qrRenderer = new QrCodeRendererPng();
+		$this->qrRenderer->render($this->qrCode, $path);
 		return $this;
 	}
 
@@ -79,6 +84,14 @@ class SharedSecretQrCodeProvider
 	public function getQrEncoder()
 	{
 		return $this->qrEncoder;
+	}
+
+	/**
+	 * @return QrCodeRendererPng
+	 */
+	public function getQrRenderer()
+	{
+		return $this->qrRenderer;
 	}
 
 	/**

@@ -28,7 +28,7 @@
   "require": {
     "php": ">=5.3",
     "lib-curl": "*",
-    "markenwerk/qr-code-suite": "dev-master",
+    "markenwerk/qr-code-suite": "~3.0",
     "enygma/yubikey": "~3.0",
     "skleeschulte/base32": "*"
   },

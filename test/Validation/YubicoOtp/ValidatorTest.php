@@ -10,7 +10,7 @@ namespace OathServerSuite\Validation\YubicoOtp;
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {
 
-	const PUBLIC_ID = 'ccccccfcttfik';
+	const PUBLIC_ID = 'ccccccfcttfi';
 
 	public function testValidateMalformed()
 	{
@@ -21,8 +21,11 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 		$isValid = $validator->validate('12345678', self::PUBLIC_ID);
 		$this->assertEquals(false, $isValid);
 		// Wellformed
-		$isValid = $validator->validate('ccccccfcttfikkgitudletutjneikkrfcugnuhikdbhj', self::PUBLIC_ID);
-		$this->assertEquals(false, $isValid);
+		$validator->validate('ccccccfcttfikkgitudletutjneikkrfcugnuhikdbhj', self::PUBLIC_ID);
+		$this->assertEquals(false, $validator->isValid());
+		// Parser
+		$parser = $validator->getOtpParser();
+		$this->assertInstanceOf('\OathServerSuite\Validation\YubicoOtp\Parser', $parser);
 	}
 
 }

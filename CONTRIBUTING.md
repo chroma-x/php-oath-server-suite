@@ -97,7 +97,7 @@ phpunit --bootstrap vendor/autoload.php --configuration phpunit.xml.dist
 
 ## Full example
 
-Here’s an example workflow for `php-oath-server-suite` hosted on Github, which is currently in version 2.0.x. Your username is `yourname` and you’re submitting a basic bugfix. 
+Here’s an example workflow for `php-oath-server-suite` hosted on Github, which is currently in version 3.0.12. Your username is `yourname` and you’re submitting a basic bugfix. 
 
 ### Preparing your Fork
 
@@ -112,7 +112,7 @@ git clone git@github.com:yourname/php-oath-server-suite
 
 ```
 cd php-oath-server-suite
-git checkout -b foo-the-bars 2.0
+git checkout -b fix-issue-269 3.0.12
 ```
 
 ### Making your Changes

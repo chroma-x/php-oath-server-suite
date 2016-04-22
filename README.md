@@ -281,8 +281,8 @@ if ($validator->isValid()) {
 ## Contribution
 
 Contributing to our projects is always very appreciated.  
-**But: please follow the contribution guidelines written down in the `CONTRIBUTING.md` document.**
+**But: please follow the contribution guidelines written down in the [CONTRIBUTING.md](https://github.com/markenwerk/php-oath-server-suite/blob/master/CONTRIBUTING.md) document.**
 
 ## License
 
-Oath Server Suite is under the MIT license.
+PHP Oath Server Suite is under the MIT license.

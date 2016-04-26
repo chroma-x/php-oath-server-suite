@@ -44,6 +44,8 @@ To use Yubico OTP you need YubiCloud access. You can get free API credentials fr
 #### Validating a Yubico one time password
 
 ```{php}
+use CommonException\NetworkException\Base\NetworkException;
+
 $otp = $_POST['otp'];
 $userPublicId = 'fetchedFromDatabaseOrSimilar';
 
@@ -55,7 +57,7 @@ try {
 	} else {
 		// Validation failed
 	}
-} catch (OathServerSuite\Exception\NetworkException $exception) {
+} catch (NetworkException $exception) {
 	// Accessing the YubiCloud webservice failed.
 }
 ```
@@ -277,6 +279,15 @@ if ($validator->isValid()) {
 	// Validation failed
 }
 ```
+
+---
+
+## Exception handling
+
+PHP Oath Server Suite provides different exceptions – some provided by the PHP Common Exceptions project – for proper handling.  
+You can find more information about [PHP Common Exceptions at Github](https://github.com/markenwerk/php-common-exceptions).
+
+---
 
 ## Contribution
 

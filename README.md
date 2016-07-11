@@ -23,7 +23,7 @@ For more information about the Yubico OTP authentication mechanism read the „W
 ```{json}
 {
    	"require": {
-        "markenwerk/oath-server-suite": "~3.0"
+        "markenwerk/oath-server-suite": "~4.0"
     }
 }
 ```

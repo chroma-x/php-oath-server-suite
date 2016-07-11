@@ -76,9 +76,9 @@ To allow authentication the client and server has to share a secret. Usually the
 ##### TOTP (Time-based One-time Password Algorithm)
 
 ```{php}
-use OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
-use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpBase32SharedSecretUrlEncoder;
-use QrCodeSuite\QrEncode\QrEncoder;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpBase32SharedSecretUrlEncoder;
+use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
 
 // Initialize Oath URL encoder for TOTP (Time-based One-time Password Algorithm)
 $contentEncoder = new TotpBase32SharedSecretUrlEncoder();
@@ -110,9 +110,9 @@ $sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 ##### HOTP (HMAC-based One-time Password Algorithm)
 
 ```{php}
-use OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
-use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpBase32SharedSecretUrlEncoder;
-use QrCodeSuite\QrEncode\QrEncoder;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpBase32SharedSecretUrlEncoder;
+use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
 
 // Initialize Oath URL encoder for HOTP (HMAC-based One-time Password Algorithm)
 $contentEncoder = new HotpBase32SharedSecretUrlEncoder();
@@ -183,9 +183,9 @@ if ($validator->isValid()) {
 ##### TOTP (Time-based One-time Password Algorithm)
 
 ```{php}
-use OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
-use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpSharedSecretUrlEncoder;
-use QrCodeSuite\QrEncode\QrEncoder;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpSharedSecretUrlEncoder;
+use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
 
 // Initialize Oath URL encoder for TOTP (Time-based One-time Password Algorithm)
 $contentEncoder = new TotpSharedSecretUrlEncoder();
@@ -217,9 +217,9 @@ $sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 ##### HOTP (HMAC-based One-time Password Algorithm)
 
 ```{php}
-use OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
-use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpSharedSecretUrlEncoder;
-use QrCodeSuite\QrEncode\QrEncoder;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpSharedSecretUrlEncoder;
+use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
 
 // Initialize Oath URL encoder for HOTP (HMAC-based One-time Password Algorithm)
 $contentEncoder = new HotpSharedSecretUrlEncoder();

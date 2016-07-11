@@ -1,11 +1,11 @@
 <?php
 
-namespace OathServerSuite\Validation\Oath;
+namespace Markenwerk\OathServerSuite\Validation\Oath;
 
 /**
  * Class ValidatorTest
  *
- * @package OathServerSuite\Validation\Oath
+ * @package Markenwerk\OathServerSuite\Validation\Oath
  */
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {

@@ -22,14 +22,14 @@
   ],
   "autoload": {
     "psr-4": {
-      "OathServerSuite\\": "src/"
+      "Markenwerk\\OathServerSuite\\": "src/"
     }
   },
   "require": {
     "php": ">=5.3",
     "lib-curl": "*",
     "markenwerk/common-exceptions": "~3.0",
-    "markenwerk/qr-code-suite": "~3.0",
+    "markenwerk/qr-code-suite": "~4.0",
     "enygma/yubikey": "~3.0",
     "skleeschulte/base32": "*"
   },

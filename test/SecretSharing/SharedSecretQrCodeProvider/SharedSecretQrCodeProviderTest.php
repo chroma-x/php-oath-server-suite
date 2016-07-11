@@ -1,17 +1,17 @@
 <?php
 
-namespace OathServerSuite\SecretSharing\SharedSecretQrCodeProvider;
+namespace Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider;
 
-use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpBase32SharedSecretUrlEncoder;
-use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpSharedSecretUrlEncoder;
-use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpBase32SharedSecretUrlEncoder;
-use OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpSharedSecretUrlEncoder;
-use QrCodeSuite\QrEncode\QrEncoder;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpBase32SharedSecretUrlEncoder;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpSharedSecretUrlEncoder;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpBase32SharedSecretUrlEncoder;
+use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpSharedSecretUrlEncoder;
+use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
 
 /**
  * Class SharedSecretQrCodeProviderTest
  *
- * @package OathServerSuite\SecretSharing\SharedSecretQrCodeProvider
+ * @package Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider
  */
 class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace OathServerSuite\SecretSharing\SharedSecretUrlEncoder;
+namespace Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder;
 
 use SKleeschulte\Base32;
 
 /**
  * Class HotpBase32SharedSecretUrlEncoder
  *
- * @package OathServerSuite\SharedSecretUrlEncoder
+ * @package Markenwerk\OathServerSuite\SharedSecretUrlEncoder
  */
 class HotpBase32SharedSecretUrlEncoder implements Base\SharedSecretUrlEncoderInterface
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace OathServerSuite\Exception;
+namespace Markenwerk\OathServerSuite\Exception;
 
 /**
  * Class ValidationFailedException
  *
- * @package OathServerSuite\Exception
+ * @package Markenwerk\OathServerSuite\Exception
  */
 class ValidationFailedException extends \Exception
 {

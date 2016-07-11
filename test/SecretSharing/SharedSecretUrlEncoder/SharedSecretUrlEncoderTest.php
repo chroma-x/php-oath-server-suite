@@ -1,11 +1,11 @@
 <?php
 
-namespace OathServerSuite\SecretSharing\SharedSecretUrlEncoder;
+namespace Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder;
 
 /**
  * Class SharedSecretUrlEncoderTest
  *
- * @package OathServerSuite\SecretSharing\SharedSecretUrlEncoder
+ * @package Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder
  */
 class SharedSecretUrlEncoderTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace OathServerSuite\Validation\Oath;
+namespace Markenwerk\OathServerSuite\Validation\Oath;
 
 /**
  * Class HotpValidator
  *
- * @package OathServerSuite\Validation\Oath
+ * @package Markenwerk\OathServerSuite\Validation\Oath
  */
 class HotpValidator extends Base\OathBaseValidator
 {

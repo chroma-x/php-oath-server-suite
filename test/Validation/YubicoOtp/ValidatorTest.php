@@ -1,11 +1,11 @@
 <?php
 
-namespace OathServerSuite\Validation\YubicoOtp;
+namespace Markenwerk\OathServerSuite\Validation\YubicoOtp;
 
 /**
  * Class ValidatorTest
  *
- * @package OathServerSuite\Validation\YubicoOtp
+ * @package Markenwerk\OathServerSuite\Validation\YubicoOtp
  */
 class ValidatorTest extends \PHPUnit_Framework_TestCase
 {
@@ -25,7 +25,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(false, $validator->isValid());
 		// Parser
 		$parser = $validator->getOtpParser();
-		$this->assertInstanceOf('\OathServerSuite\Validation\YubicoOtp\Parser', $parser);
+		$this->assertInstanceOf('\Markenwerk\OathServerSuite\Validation\YubicoOtp\Parser', $parser);
 	}
 
 }

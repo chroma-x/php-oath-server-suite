@@ -1,15 +1,15 @@
 <?php
 
-namespace OathServerSuite\Validation\YubicoOtp;
+namespace Markenwerk\OathServerSuite\Validation\YubicoOtp;
 
 use Markenwerk\CommonException\NetworkException\Base\NetworkException;
-use OathServerSuite\Exception\ParserException;
+use Markenwerk\OathServerSuite\Exception\ParserException;
 use Yubikey\Validate;
 
 /**
  * Class Validator
  *
- * @package OathServerSuite\YubicoOtp
+ * @package Markenwerk\OathServerSuite\YubicoOtp
  */
 class Validator
 {

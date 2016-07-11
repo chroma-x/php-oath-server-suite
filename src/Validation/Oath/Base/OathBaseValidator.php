@@ -1,11 +1,11 @@
 <?php
 
-namespace OathServerSuite\Validation\Oath\Base;
+namespace Markenwerk\OathServerSuite\Validation\Oath\Base;
 
 /**
  * Class OathValidator
  *
- * @package OathServerSuite\Validation\Oath\Base
+ * @package Markenwerk\OathServerSuite\Validation\Oath\Base
  */
 abstract class OathBaseValidator
 {

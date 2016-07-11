@@ -1,11 +1,11 @@
 <?php
 
-namespace OathServerSuite\SecretSharing\SharedSecretUrlEncoder\Base;
+namespace Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\Base;
 
 /**
  * Interface SharedSecretUrlEncoderInterface
  *
- * @package OathServerSuite\SharedSecretUrlEncoder\Base
+ * @package Markenwerk\OathServerSuite\SharedSecretUrlEncoder\Base
  */
 interface SharedSecretUrlEncoderInterface
 {

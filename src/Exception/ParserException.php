@@ -1,11 +1,11 @@
 <?php
 
-namespace OathServerSuite\Exception;
+namespace Markenwerk\OathServerSuite\Exception;
 
 /**
  * Class ParserException
  *
- * @package OathServerSuite\Exception
+ * @package Markenwerk\OathServerSuite\Exception
  */
 class ParserException extends \Exception
 {

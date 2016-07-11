@@ -2,7 +2,7 @@
 
 namespace OathServerSuite\Validation\YubicoOtp;
 
-use CommonException\NetworkException\Base\NetworkException;
+use Markenwerk\CommonException\NetworkException\Base\NetworkException;
 use OathServerSuite\Exception\ParserException;
 use Yubikey\Validate;
 

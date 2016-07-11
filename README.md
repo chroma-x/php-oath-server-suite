@@ -45,7 +45,7 @@ To use Yubico OTP you need YubiCloud access. You can get free API credentials fr
 #### Validating a Yubico one time password
 
 ```{php}
-use CommonException\NetworkException\Base\NetworkException;
+use Markenwerk\CommonException\NetworkException\Base\NetworkException;
 
 $otp = $_POST['otp'];
 $userPublicId = 'fetchedFromDatabaseOrSimilar';

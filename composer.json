@@ -28,7 +28,7 @@
   "require": {
     "php": ">=5.3",
     "lib-curl": "*",
-    "markenwerk/common-exceptions": "~2.0",
+    "markenwerk/common-exceptions": "~3.0",
     "markenwerk/qr-code-suite": "~3.0",
     "enygma/yubikey": "~3.0",
     "skleeschulte/base32": "*"

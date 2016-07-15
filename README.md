@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/markenwerk/php-oath-server-suite.svg?branch=master)](https://travis-ci.org/markenwerk/php-oath-server-suite)
 [![Test Coverage](https://codeclimate.com/github/markenwerk/php-oath-server-suite/badges/coverage.svg)](https://codeclimate.com/github/markenwerk/php-oath-server-suite/coverage)
 [![Dependency Status](https://www.versioneye.com/user/projects/571f771cfcd19a0045442330/badge.svg)](https://www.versioneye.com/user/projects/571f771cfcd19a0045442330)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/bceed593-760a-4990-a2b0-89129167665d.svg)](https://insight.sensiolabs.com/projects/bceed593-760a-4990-a2b0-89129167665d)
 [![Code Climate](https://codeclimate.com/github/markenwerk/php-oath-server-suite/badges/gpa.svg)](https://codeclimate.com/github/markenwerk/php-oath-server-suite)
 [![Latest Stable Version](https://poser.pugx.org/markenwerk/oath-server-suite/v/stable)](https://packagist.org/packages/markenwerk/oath-server-suite)
 [![Total Downloads](https://poser.pugx.org/markenwerk/oath-server-suite/downloads)](https://packagist.org/packages/markenwerk/oath-server-suite)

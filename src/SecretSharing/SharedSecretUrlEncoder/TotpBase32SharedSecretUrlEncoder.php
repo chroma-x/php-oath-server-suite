@@ -24,7 +24,7 @@ class TotpBase32SharedSecretUrlEncoder implements Base\SharedSecretUrlEncoderInt
 		$sharedSecret = Base32::encodeByteStr($sharedSecret, true);
 		$encoded = 'otpauth://totp/' . rawurlencode($keyName) . '?secret=' . $sharedSecret;
 		if (!is_null($issuer)) {
-			$encoded .= '&issuer=' . $issuer;
+			$encoded .= '&issuer=' . rawurlencode($issuer);
 		}
 		return $encoded;
 	}

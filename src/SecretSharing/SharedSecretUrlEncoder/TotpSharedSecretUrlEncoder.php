@@ -21,7 +21,7 @@ class TotpSharedSecretUrlEncoder implements Base\SharedSecretUrlEncoderInterface
 		$sharedSecret = bin2hex($sharedSecret);
 		$encoded = 'otpauth://totp/' . rawurlencode($keyName) . '?secret=' . $sharedSecret;
 		if (!is_null($issuer)) {
-			$encoded .= '&issuer=' . $issuer;
+			$encoded .= '&issuer=' . rawurlencode($issuer);
 		}
 		return $encoded;
 	}

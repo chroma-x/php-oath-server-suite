@@ -85,7 +85,10 @@ use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
 $contentEncoder = new TotpBase32SharedSecretUrlEncoder();
 
 // Setting the key name
-$keyName = 'Awesome Application';
+$keyName = 'My Username';
+
+// Setting the issuer name
+$issuerName = 'Awesome Application';
 
 // Setting a secret
 // Attention: This is just an example value
@@ -97,7 +100,7 @@ $sharedSecretUrl = $contentEncoder->encode($keyName, $sharedSecret);
 
 // Start QR code provision
 // Initialize the QR code provider with Oath URL encoder for TOTP
-$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new TotpBase32SharedSecretUrlEncoder(), $keyName, $sharedSecret);
+$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new TotpBase32SharedSecretUrlEncoder(), $keyName, $sharedSecret, $issuerName);
 
 // Configure the QR code renderer for your needs
 $sharedSecretQrProvider->getQrEncoder()
@@ -119,7 +122,10 @@ use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
 $contentEncoder = new HotpBase32SharedSecretUrlEncoder();
 
 // Setting the key name
-$keyName = 'Awesome Application';
+$keyName = 'My Username';
+
+// Setting the issuer name
+$issuerName = 'Awesome Application';
 
 // Setting a secret
 // Attention: This is just an example value
@@ -131,7 +137,7 @@ $sharedSecretUrl = $contentEncoder->encode($keyName, $sharedSecret);
 
 // Start QR code provision
 // Initialize the QR code provider with Oath URL encoder for HOTP
-$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new HotpBase32SharedSecretUrlEncoder(), $keyName, $sharedSecret);
+$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new HotpBase32SharedSecretUrlEncoder(), $keyName, $sharedSecret, $issuerName);
 
 // Configure the QR code renderer for your needs
 $sharedSecretQrProvider->getQrEncoder()
@@ -192,7 +198,10 @@ use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
 $contentEncoder = new TotpSharedSecretUrlEncoder();
 
 // Setting the key name
-$keyName = 'Awesome Application';
+$keyName = 'My Username';
+
+// Setting the issuer name
+$issuerName = 'Awesome Application';
 
 // Setting a secret
 // Attention: This is just an example value
@@ -204,7 +213,7 @@ $sharedSecretUrl = $contentEncoder->encode($keyName, $sharedSecret);
 
 // Start QR code provision
 // Initialize the QR code provider with Oath URL encoder for TOTP
-$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new TotpSharedSecretUrlEncoder(), $keyName, $sharedSecret);
+$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new TotpSharedSecretUrlEncoder(), $keyName, $sharedSecret, $issuerName);
 
 // Configure the QR code renderer for your needs
 $sharedSecretQrProvider->getQrEncoder()
@@ -226,7 +235,10 @@ use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
 $contentEncoder = new HotpSharedSecretUrlEncoder();
 
 // Setting the key name
-$keyName = 'Awesome Application';
+$keyName = 'My Username';
+
+// Setting the issuer name
+$issuerName = 'Awesome Application';
 
 // Setting a secret
 // Attention: This is just an example value
@@ -238,7 +250,7 @@ $sharedSecretUrl = $contentEncoder->encode($keyName, $sharedSecret);
 
 // Start QR code provision
 // Initialize the QR code provider with Oath URL encoder for HOTP
-$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new HotpSharedSecretUrlEncoder(), $keyName, $sharedSecret);
+$sharedSecretQrProvider = new SharedSecretQrCodeProvider(new HotpSharedSecretUrlEncoder(), $keyName, $sharedSecret, $issuerName);
 
 // Configure the QR code renderer for your needs
 $sharedSecretQrProvider->getQrEncoder()

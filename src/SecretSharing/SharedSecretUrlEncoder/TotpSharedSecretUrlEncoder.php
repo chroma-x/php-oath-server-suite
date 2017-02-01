@@ -13,12 +13,17 @@ class TotpSharedSecretUrlEncoder implements Base\SharedSecretUrlEncoderInterface
 	/**
 	 * @param string $keyName
 	 * @param string $sharedSecret
+	 * @param string $issuer
 	 * @return string
 	 */
-	public function encode($keyName, $sharedSecret)
+	public function encode($keyName, $sharedSecret, $issuer = null)
 	{
 		$sharedSecret = bin2hex($sharedSecret);
-		return 'otpauth://totp/' . rawurlencode($keyName) . '?secret=' . $sharedSecret;
+		$encoded = 'otpauth://totp/' . rawurlencode($keyName) . '?secret=' . $sharedSecret;
+		if (!is_null($issuer)) {
+			$encoded .= '&issuer=' . $issuer;
+		}
+		return $encoded;
 	}
 
 }

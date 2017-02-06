@@ -20,6 +20,9 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(false, $isValid);
 		$isValid = $validator->validate('12345678', self::PUBLIC_ID);
 		$this->assertEquals(false, $isValid);
+		// Malformed
+		$validator->validate('ccccccfcttfikkgitudletutjneikkrfcugnuhikdbhj', 'abc');
+		$this->assertEquals(false, $validator->isValid());
 		// Wellformed
 		$validator->validate('ccccccfcttfikkgitudletutjneikkrfcugnuhikdbhj', self::PUBLIC_ID);
 		$this->assertEquals(false, $validator->isValid());

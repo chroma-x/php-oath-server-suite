@@ -16,7 +16,7 @@ use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
 class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 {
 
-	const SHARED_SECRET ='9nxnvWgVw5Ca2YLUIkou2CkV2K15QI';
+	const SHARED_SECRET = '9nxnvWgVw5Ca2YLUIkou2CkV2K15QI';
 	const EXPECTED_HOTP_BASE32_SHARED_SECRET_URL = 'otpauth://hotp/Awesome%20Application?secret=GM4TMZJXHA3GKNZWGU3TMNZVGY3TOMZVGQZTMMJTGI2TSNDDGU2TIOJWMI3GMNZVGMZDIMZWMI2TMMZSGRRDGMJTGU2TCNBZ&issuer=Markenwerk';
 	const EXPECTED_TOTP_BASE32_SHARED_SECRET_URL = 'otpauth://totp/Awesome%20Application?secret=GM4TMZJXHA3GKNZWGU3TMNZVGY3TOMZVGQZTMMJTGI2TSNDDGU2TIOJWMI3GMNZVGMZDIMZWMI2TMMZSGRRDGMJTGU2TCNBZ&issuer=Markenwerk';
 	const EXPECTED_HOTP_SHARED_SECRET_URL = 'otpauth://hotp/Awesome%20Application?secret=396e786e765767567735436132594c55496b6f7532436b56324b31355149&issuer=Markenwerk';
@@ -34,6 +34,12 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 
 		// Test QR code output file exists
 		$this->assertFileExists($qrCodeOutputPath);
+
+		// Test QR code measurements
+		$this->assertEquals(41, $sharedSecretQrCodeProvider->getQrCode()->getWidth());
+		$this->assertEquals(41, $sharedSecretQrCodeProvider->getQrCode()->getHeight());
+		$this->assertEquals(43, count($sharedSecretQrCodeProvider->getQrCode()->getRows()));
+		$this->assertEquals(43, count($sharedSecretQrCodeProvider->getQrCode()->getRow(0)->getPoints()));
 
 		// Test QR code output file mesaurement
 		$imageSize = getimagesize($qrCodeOutputPath);
@@ -60,6 +66,12 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		// Test QR code output file exists
 		$this->assertFileExists($qrCodeOutputPath);
 
+		// Test QR code measurements
+		$this->assertEquals(41, $sharedSecretQrCodeProvider->getQrCode()->getWidth());
+		$this->assertEquals(41, $sharedSecretQrCodeProvider->getQrCode()->getHeight());
+		$this->assertEquals(43, count($sharedSecretQrCodeProvider->getQrCode()->getRows()));
+		$this->assertEquals(43, count($sharedSecretQrCodeProvider->getQrCode()->getRow(0)->getPoints()));
+
 		// Test QR code output file mesaurement
 		$imageSize = getimagesize($qrCodeOutputPath);
 		$this->assertEquals($sharedSecretQrCodeProvider->getQrRenderer()->getWidth(), $imageSize[0]);
@@ -85,6 +97,12 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 		// Test QR code output file exists
 		$this->assertFileExists($qrCodeOutputPath);
 
+		// Test QR code measurements
+		$this->assertEquals(41, $sharedSecretQrCodeProvider->getQrCode()->getWidth());
+		$this->assertEquals(41, $sharedSecretQrCodeProvider->getQrCode()->getHeight());
+		$this->assertEquals(43, count($sharedSecretQrCodeProvider->getQrCode()->getRows()));
+		$this->assertEquals(43, count($sharedSecretQrCodeProvider->getQrCode()->getRow(0)->getPoints()));
+
 		// Test QR code output file mesaurement
 		$imageSize = getimagesize($qrCodeOutputPath);
 		$this->assertEquals($sharedSecretQrCodeProvider->getQrRenderer()->getWidth(), $imageSize[0]);
@@ -109,6 +127,12 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 
 		// Test QR code output file exists
 		$this->assertFileExists($qrCodeOutputPath);
+
+		// Test QR code measurements
+		$this->assertEquals(41, $sharedSecretQrCodeProvider->getQrCode()->getWidth());
+		$this->assertEquals(41, $sharedSecretQrCodeProvider->getQrCode()->getHeight());
+		$this->assertEquals(43, count($sharedSecretQrCodeProvider->getQrCode()->getRows()));
+		$this->assertEquals(43, count($sharedSecretQrCodeProvider->getQrCode()->getRow(0)->getPoints()));
 
 		// Test QR code output file mesaurement
 		$imageSize = getimagesize($qrCodeOutputPath);

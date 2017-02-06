@@ -21,6 +21,8 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 		$isValid = $validator->validate(self::TOTP, self::SHARED_SECRET);
 		$this->assertEquals(false, $isValid);
 		$this->assertEquals($isValid, $validator->isValid());
+		$this->assertEquals(30, $validator->getValidPeriod());
+		$this->assertEquals(6, $validator->getPasswordLength());
 	}
 
 	public function testValidateHotp()
@@ -29,6 +31,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 		$isValid = $validator->validate(self::HOTP, self::SHARED_SECRET, self::COUNTER);
 		$this->assertEquals(false, $isValid);
 		$this->assertEquals($isValid, $validator->isValid());
+		$this->assertEquals(6, $validator->getPasswordLength());
 	}
 
 }

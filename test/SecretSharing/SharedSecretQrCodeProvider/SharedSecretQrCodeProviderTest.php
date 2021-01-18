@@ -1,31 +1,31 @@
 <?php
 
-namespace Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider;
+namespace ChromaX\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider;
 
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpBase32SharedSecretUrlEncoder;
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpSharedSecretUrlEncoder;
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpBase32SharedSecretUrlEncoder;
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpSharedSecretUrlEncoder;
-use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpBase32SharedSecretUrlEncoder;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpSharedSecretUrlEncoder;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpBase32SharedSecretUrlEncoder;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpSharedSecretUrlEncoder;
+use ChromaX\QrCodeSuite\QrEncode\QrEncoder;
 
 /**
  * Class SharedSecretQrCodeProviderTest
  *
- * @package Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider
+ * @package ChromaX\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider
  */
 class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 {
 
 	const SHARED_SECRET = '9nxnvWgVw5Ca2YLUIkou2CkV2K15QI';
-	const EXPECTED_HOTP_BASE32_SHARED_SECRET_URL = 'otpauth://hotp/Awesome%20Application?secret=GM4TMZJXHA3GKNZWGU3TMNZVGY3TOMZVGQZTMMJTGI2TSNDDGU2TIOJWMI3GMNZVGMZDIMZWMI2TMMZSGRRDGMJTGU2TCNBZ&issuer=Markenwerk';
-	const EXPECTED_TOTP_BASE32_SHARED_SECRET_URL = 'otpauth://totp/Awesome%20Application?secret=GM4TMZJXHA3GKNZWGU3TMNZVGY3TOMZVGQZTMMJTGI2TSNDDGU2TIOJWMI3GMNZVGMZDIMZWMI2TMMZSGRRDGMJTGU2TCNBZ&issuer=Markenwerk';
-	const EXPECTED_HOTP_SHARED_SECRET_URL = 'otpauth://hotp/Awesome%20Application?secret=396e786e765767567735436132594c55496b6f7532436b56324b31355149&issuer=Markenwerk';
-	const EXPECTED_TOTP_SHARED_SECRET_URL = 'otpauth://totp/Awesome%20Application?secret=396e786e765767567735436132594c55496b6f7532436b56324b31355149&issuer=Markenwerk';
+	const EXPECTED_HOTP_BASE32_SHARED_SECRET_URL = 'otpauth://hotp/Awesome%20Application?secret=GM4TMZJXHA3GKNZWGU3TMNZVGY3TOMZVGQZTMMJTGI2TSNDDGU2TIOJWMI3GMNZVGMZDIMZWMI2TMMZSGRRDGMJTGU2TCNBZ&issuer=ChromaX';
+	const EXPECTED_TOTP_BASE32_SHARED_SECRET_URL = 'otpauth://totp/Awesome%20Application?secret=GM4TMZJXHA3GKNZWGU3TMNZVGY3TOMZVGQZTMMJTGI2TSNDDGU2TIOJWMI3GMNZVGMZDIMZWMI2TMMZSGRRDGMJTGU2TCNBZ&issuer=ChromaX';
+	const EXPECTED_HOTP_SHARED_SECRET_URL = 'otpauth://hotp/Awesome%20Application?secret=396e786e765767567735436132594c55496b6f7532436b56324b31355149&issuer=ChromaX';
+	const EXPECTED_TOTP_SHARED_SECRET_URL = 'otpauth://totp/Awesome%20Application?secret=396e786e765767567735436132594c55496b6f7532436b56324b31355149&issuer=ChromaX';
 
 	public function testHotpBase32ProvideQrCode()
 	{
 		// Init QR code renderer
-		$sharedSecretQrCodeProvider = new SharedSecretQrCodeProvider(new HotpBase32SharedSecretUrlEncoder(), 'Awesome Application', self::SHARED_SECRET, 'Markenwerk');
+		$sharedSecretQrCodeProvider = new SharedSecretQrCodeProvider(new HotpBase32SharedSecretUrlEncoder(), 'Awesome Application', self::SHARED_SECRET, 'ChromaX');
 		$sharedSecretQrCodeProvider->getQrEncoder()
 			->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 			->setTempDir(__DIR__ . '/tmp/');
@@ -56,7 +56,7 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 	public function testTotpBase32ProvideQrCode()
 	{
 		// Init QR code renderer
-		$sharedSecretQrCodeProvider = new SharedSecretQrCodeProvider(new TotpBase32SharedSecretUrlEncoder(), 'Awesome Application', self::SHARED_SECRET, 'Markenwerk');
+		$sharedSecretQrCodeProvider = new SharedSecretQrCodeProvider(new TotpBase32SharedSecretUrlEncoder(), 'Awesome Application', self::SHARED_SECRET, 'ChromaX');
 		$sharedSecretQrCodeProvider->getQrEncoder()
 			->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 			->setTempDir(__DIR__ . '/tmp/');
@@ -87,7 +87,7 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 	public function testHotpProvideQrCode()
 	{
 		// Init QR code renderer
-		$sharedSecretQrCodeProvider = new SharedSecretQrCodeProvider(new HotpSharedSecretUrlEncoder(), 'Awesome Application', self::SHARED_SECRET, 'Markenwerk');
+		$sharedSecretQrCodeProvider = new SharedSecretQrCodeProvider(new HotpSharedSecretUrlEncoder(), 'Awesome Application', self::SHARED_SECRET, 'ChromaX');
 		$sharedSecretQrCodeProvider->getQrEncoder()
 			->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 			->setTempDir(__DIR__ . '/tmp/');
@@ -118,7 +118,7 @@ class SharedSecretQrCodeProviderTest extends \PHPUnit_Framework_TestCase
 	public function testTotpProvideQrCode()
 	{
 		// Init QR code renderer
-		$sharedSecretQrCodeProvider = new SharedSecretQrCodeProvider(new TotpSharedSecretUrlEncoder(), 'Awesome Application', self::SHARED_SECRET, 'Markenwerk');
+		$sharedSecretQrCodeProvider = new SharedSecretQrCodeProvider(new TotpSharedSecretUrlEncoder(), 'Awesome Application', self::SHARED_SECRET, 'ChromaX');
 		$sharedSecretQrCodeProvider->getQrEncoder()
 			->setLevel(QrEncoder::QR_CODE_LEVEL_LOW)
 			->setTempDir(__DIR__ . '/tmp/');

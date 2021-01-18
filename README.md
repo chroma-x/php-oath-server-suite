@@ -1,13 +1,13 @@
 # PHP Oath Server Suite
 
-[![Build Status](https://travis-ci.org/markenwerk/php-oath-server-suite.svg?branch=master)](https://travis-ci.org/markenwerk/php-oath-server-suite)
-[![Test Coverage](https://codeclimate.com/github/markenwerk/php-oath-server-suite/badges/coverage.svg)](https://codeclimate.com/github/markenwerk/php-oath-server-suite/coverage)
+[![Build Status](https://travis-ci.org/chroma-x/php-oath-server-suite.svg?branch=master)](https://travis-ci.org/chroma-x/php-oath-server-suite)
+[![Test Coverage](https://codeclimate.com/github/chroma-x/php-oath-server-suite/badges/coverage.svg)](https://codeclimate.com/github/chroma-x/php-oath-server-suite/coverage)
 [![Dependency Status](https://www.versioneye.com/user/projects/571f771cfcd19a0045442330/badge.svg)](https://www.versioneye.com/user/projects/571f771cfcd19a0045442330)
 [![SensioLabs Insight](https://img.shields.io/sensiolabs/i/8f5a3440-ec20-448b-b459-057eecbc5d4a.svg)](https://insight.sensiolabs.com/projects/8f5a3440-ec20-448b-b459-057eecbc5d4a)
-[![Code Climate](https://codeclimate.com/github/markenwerk/php-oath-server-suite/badges/gpa.svg)](https://codeclimate.com/github/markenwerk/php-oath-server-suite)
-[![Latest Stable Version](https://poser.pugx.org/markenwerk/oath-server-suite/v/stable)](https://packagist.org/packages/markenwerk/oath-server-suite)
-[![Total Downloads](https://poser.pugx.org/markenwerk/oath-server-suite/downloads)](https://packagist.org/packages/markenwerk/oath-server-suite)
-[![License](https://poser.pugx.org/markenwerk/oath-server-suite/license)](https://packagist.org/packages/markenwerk/oath-server-suite)
+[![Code Climate](https://codeclimate.com/github/chroma-x/php-oath-server-suite/badges/gpa.svg)](https://codeclimate.com/github/chroma-x/php-oath-server-suite)
+[![Latest Stable Version](https://poser.pugx.org/chroma-x/oath-server-suite/v/stable)](https://packagist.org/packages/chroma-x/oath-server-suite)
+[![Total Downloads](https://poser.pugx.org/chroma-x/oath-server-suite/downloads)](https://packagist.org/packages/chroma-x/oath-server-suite)
+[![License](https://poser.pugx.org/chroma-x/oath-server-suite/license)](https://packagist.org/packages/chroma-x/oath-server-suite)
 
 A collection of classes to provide second factor authentication like Yubico OTP (Yubikey), Oath (TOTP, HOTP, GoogleAuthenticator) server-side.
 
@@ -24,7 +24,7 @@ For more information about the Yubico OTP authentication mechanism read the „W
 ```{json}
 {
    	"require": {
-        "markenwerk/oath-server-suite": "~4.0"
+        "chroma-x/oath-server-suite": "~4.0"
     }
 }
 ```
@@ -46,7 +46,7 @@ To use Yubico OTP you need YubiCloud access. You can get free API credentials fr
 #### Validating a Yubico one time password
 
 ```{php}
-use Markenwerk\CommonException\NetworkException\Base\NetworkException;
+use ChromaX\CommonException\NetworkException\Base\NetworkException;
 
 $otp = $_POST['otp'];
 $userPublicId = 'fetchedFromDatabaseOrSimilar';
@@ -77,9 +77,9 @@ To allow authentication the client and server has to share a secret. Usually the
 ##### TOTP (Time-based One-time Password Algorithm)
 
 ```{php}
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpBase32SharedSecretUrlEncoder;
-use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpBase32SharedSecretUrlEncoder;
+use ChromaX\QrCodeSuite\QrEncode\QrEncoder;
 
 // Initialize Oath URL encoder for TOTP (Time-based One-time Password Algorithm)
 $contentEncoder = new TotpBase32SharedSecretUrlEncoder();
@@ -114,9 +114,9 @@ $sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 ##### HOTP (HMAC-based One-time Password Algorithm)
 
 ```{php}
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpBase32SharedSecretUrlEncoder;
-use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpBase32SharedSecretUrlEncoder;
+use ChromaX\QrCodeSuite\QrEncode\QrEncoder;
 
 // Initialize Oath URL encoder for HOTP (HMAC-based One-time Password Algorithm)
 $contentEncoder = new HotpBase32SharedSecretUrlEncoder();
@@ -190,9 +190,9 @@ if ($validator->isValid()) {
 ##### TOTP (Time-based One-time Password Algorithm)
 
 ```{php}
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpSharedSecretUrlEncoder;
-use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\TotpSharedSecretUrlEncoder;
+use ChromaX\QrCodeSuite\QrEncode\QrEncoder;
 
 // Initialize Oath URL encoder for TOTP (Time-based One-time Password Algorithm)
 $contentEncoder = new TotpSharedSecretUrlEncoder();
@@ -227,9 +227,9 @@ $sharedSecretQrProvider->provideQrCode('/path/to/the/qrcode.png');
 ##### HOTP (HMAC-based One-time Password Algorithm)
 
 ```{php}
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpSharedSecretUrlEncoder;
-use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider\SharedSecretQrCodeProvider;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\HotpSharedSecretUrlEncoder;
+use ChromaX\QrCodeSuite\QrEncode\QrEncoder;
 
 // Initialize Oath URL encoder for HOTP (HMAC-based One-time Password Algorithm)
 $contentEncoder = new HotpSharedSecretUrlEncoder();
@@ -299,14 +299,14 @@ if ($validator->isValid()) {
 ## Exception handling
 
 PHP Oath Server Suite provides different exceptions – some provided by the PHP Common Exceptions project – for proper handling.  
-You can find more information about [PHP Common Exceptions at Github](https://github.com/markenwerk/php-common-exceptions).
+You can find more information about [PHP Common Exceptions at Github](https://github.com/chroma-x/php-common-exceptions).
 
 ---
 
 ## Contribution
 
 Contributing to our projects is always very appreciated.  
-**But: please follow the contribution guidelines written down in the [CONTRIBUTING.md](https://github.com/markenwerk/php-oath-server-suite/blob/master/CONTRIBUTING.md) document.**
+**But: please follow the contribution guidelines written down in the [CONTRIBUTING.md](https://github.com/chroma-x/php-oath-server-suite/blob/master/CONTRIBUTING.md) document.**
 
 ## License
 

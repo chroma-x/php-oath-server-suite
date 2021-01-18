@@ -1,16 +1,16 @@
 <?php
 
-namespace Markenwerk\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider;
+namespace ChromaX\OathServerSuite\SecretSharing\SharedSecretQrCodeProvider;
 
-use Markenwerk\QrCodeSuite\QrEncode\QrCode\QrCode;
-use Markenwerk\QrCodeSuite\QrEncode\QrEncoder;
-use Markenwerk\QrCodeSuite\QrRender\QrCodeRendererPng;
-use Markenwerk\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\Base\SharedSecretUrlEncoderInterface;
+use ChromaX\QrCodeSuite\QrEncode\QrCode\QrCode;
+use ChromaX\QrCodeSuite\QrEncode\QrEncoder;
+use ChromaX\QrCodeSuite\QrRender\QrCodeRendererPng;
+use ChromaX\OathServerSuite\SecretSharing\SharedSecretUrlEncoder\Base\SharedSecretUrlEncoderInterface;
 
 /**
  * Class SharedSecretQrCodeProvider
  *
- * @package Markenwerk\OathServerSuite\SharedSecretQrCodeProvider
+ * @package ChromaX\OathServerSuite\SharedSecretQrCodeProvider
  */
 class SharedSecretQrCodeProvider
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Markenwerk\OathServerSuite\Validation\YubicoOtp;
+namespace ChromaX\OathServerSuite\Validation\YubicoOtp;
 
-use Markenwerk\OathServerSuite\Exception\ParserException;
+use ChromaX\OathServerSuite\Exception\ParserException;
 
 /**
  * Class ParserTest
  *
- * @package Markenwerk\OathServerSuite\Validation\YubicoOtp
+ * @package ChromaX\OathServerSuite\Validation\YubicoOtp
  */
 class ParserTest extends \PHPUnit_Framework_TestCase
 {

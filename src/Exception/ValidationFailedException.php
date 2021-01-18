@@ -1,13 +1,15 @@
 <?php
 
-namespace Markenwerk\OathServerSuite\Exception;
+namespace ChromaX\OathServerSuite\Exception;
+
+use Exception;
 
 /**
  * Class ValidationFailedException
  *
- * @package Markenwerk\OathServerSuite\Exception
+ * @package ChromaX\OathServerSuite\Exception
  */
-class ValidationFailedException extends \Exception
+class ValidationFailedException extends Exception
 {
 
 }

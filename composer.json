@@ -1,5 +1,5 @@
 {
-  "name": "markenwerk/oath-server-suite",
+  "name": "chroma-x/oath-server-suite",
   "type": "library",
   "description": "A collection of classes to provide second factor authentication like Yubico OTP (Yubikey), Oath (TOTP, HOTP, GoogleAuthenticator) server-side.",
   "keywords": [
@@ -11,25 +11,25 @@
     "yubico",
     "google authenticator"
   ],
-  "homepage": "http://markenwerk.net/",
+  "homepage": "http://chroma-x.de/",
   "license": "MIT",
   "authors": [
     {
       "name": "Martin Brecht-Precht",
-      "email": "mb@markenwerk.net",
-      "homepage": "http://markenwerk.net"
+      "email": "mb@chroma-x.de",
+      "homepage": "http://chroma-x.de"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Markenwerk\\OathServerSuite\\": "src/"
+      "ChromaX\\OathServerSuite\\": "src/"
     }
   },
   "require": {
     "php": ">=5.3",
     "lib-curl": "*",
-    "markenwerk/common-exceptions": "~3.0",
-    "markenwerk/qr-code-suite": "~4.0",
+    "chroma-x/common-exceptions": "~3.0",
+    "chroma-x/qr-code-suite": "~4.0",
     "enygma/yubikey": "~3.0",
     "skleeschulte/base32": "*"
   },

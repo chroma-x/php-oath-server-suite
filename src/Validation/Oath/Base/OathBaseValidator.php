@@ -1,11 +1,11 @@
 <?php
 
-namespace Markenwerk\OathServerSuite\Validation\Oath\Base;
+namespace ChromaX\OathServerSuite\Validation\Oath\Base;
 
 /**
  * Class OathValidator
  *
- * @package Markenwerk\OathServerSuite\Validation\Oath\Base
+ * @package ChromaX\OathServerSuite\Validation\Oath\Base
  */
 abstract class OathBaseValidator
 {
@@ -33,7 +33,7 @@ abstract class OathBaseValidator
 	protected function calculateValidHotp($sharedSecret, $counter)
 	{
 		$hmacHash = $this->hashHmac($sharedSecret, $counter);
-		$hmacHashTruncated = $this->truncateHash($hmacHash, $this->passwordLength);
+		$hmacHashTruncated = self::truncateHash($hmacHash, $this->passwordLength);
 		return str_pad($hmacHashTruncated, $this->passwordLength, '0', STR_PAD_LEFT);
 	}
 
@@ -45,8 +45,7 @@ abstract class OathBaseValidator
 	private function hashHmac($secret, $counter)
 	{
 		$binCounter = pack('N*', 0) . pack('N*', $counter);
-		$hash = hash_hmac('sha1', $binCounter, $secret, true);
-		return $hash;
+		return hash_hmac('sha1', $binCounter, $secret, true);
 	}
 
 	/**

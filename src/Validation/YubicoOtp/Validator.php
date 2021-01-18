@@ -1,15 +1,16 @@
 <?php
 
-namespace Markenwerk\OathServerSuite\Validation\YubicoOtp;
+namespace ChromaX\OathServerSuite\Validation\YubicoOtp;
 
-use Markenwerk\CommonException\NetworkException\Base\NetworkException;
-use Markenwerk\OathServerSuite\Exception\ParserException;
+use ChromaX\CommonException\NetworkException\Base\NetworkException;
+use ChromaX\OathServerSuite\Exception\ParserException;
+use Exception;
 use Yubikey\Validate;
 
 /**
  * Class Validator
  *
- * @package Markenwerk\OathServerSuite\YubicoOtp
+ * @package ChromaX\OathServerSuite\YubicoOtp
  */
 class Validator
 {
@@ -70,7 +71,7 @@ class Validator
 		try {
 			$yubicoApi = new Validate($this->yubiCloudSecretKey, $this->yubiCloudClientId);
 			$response = $yubicoApi->check($otp);
-		} catch (\Exception $exception) {
+		} catch (Exception $exception) {
 			throw new NetworkException('YubiCloud webservice access failed.', 0, $exception);
 		}
 		$this->valid = $response->success();

@@ -1,13 +1,15 @@
 <?php
 
-namespace Markenwerk\OathServerSuite\Exception;
+namespace ChromaX\OathServerSuite\Exception;
+
+use Exception;
 
 /**
  * Class ParserException
  *
- * @package Markenwerk\OathServerSuite\Exception
+ * @package ChromaX\OathServerSuite\Exception
  */
-class ParserException extends \Exception
+class ParserException extends Exception
 {
 
 }
